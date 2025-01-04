@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, Vertical">
+    <title>Domist the store</title>
+    <style>
+        /*ATTENTION CODERS: THIS CODE ISN'T OPTIMIZED WHICH MEANS THAT IT MIGHT HURT YOUR EYES, YOU HAVE BEEN WARNED :D */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            padding: 0px;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-wrap: wrap; /* Allows multiple rows */
+            justify-content: start; /* Center cards horizontally */
+            /* gap: 20px;  Adds spacing between cards */
+        }
+
+        .classroom-card {
+            width: 360px;
+            height: 250px;
+            background-color: rgb(233, 224, 204); /* Google Classroom blue */
+            color: rgb(0, 0, 0);
+            border-radius: 10px; /*Corner of the UI */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            padding: 0px;
+            margin: 10px;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .picture-card1 {
+            min-width: 100%;
+            max-height: 60px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .picture-card2 {
+            min-width: 100%;
+            max-height: 30%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .classroom-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-title {
+            font-size: 22px;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        .card-description {
+            font-size: 18px;
+            padding: 10px;
+        }
+
+        .heading {
+            width: 100%;
+            height: 60px;
+            /*<license> Domist.html made by Domism group (Hero_Wong) </license>*/
+            display: flex;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            align-items: center; /* Vertical */
+            background-color: orange;
+        }
+
+        .tags-boxes {
+            align-self: flex-end;
+            align-content: center;
+            display: flex;
+            flex-direction: row;
+            padding: 0px;
+            width: 100%;
+            height: 40px;
+        }
+
+        .tags {
+            width: 30px;
+            height: 30px;
+            /*background-color: rgb(223, 65, 65);*/
+            color: rgb(0, 0, 0);
+            border-radius: 10px; /*Corner of the UI */
+            display: flex; /* Use flexbox */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            margin: 5px;
+            align-items: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .drinks {
+            background-color: #48c5ff;
+        }
+
+        .foods {
+            background-color: #ff4866;
+        }
+
+        .snacks {
+            background-color: rgb(214, 181, 140);
+        }
+
+        .icecream {
+            background-color: #f5f5f5;
+        }
+
+        .heading-content1 {
+            padding-left: 20px;
+            max-width: 50px;
+            max-height: 50px;
+            border: black 3px;
+        }
+
+        .heading-content2 {
+            padding-left: 30px;
+        }
+        
+        .heading-content3 {
+            width: 40px;
+            margin: 10px;
+            align-content: center;
+        }
+
+        .testing1 { /*test stuff here */
+            font-size: 20px;
+        }
+
+        #popup {
+            display: none;
+            width: 80%;
+            height: 80%;
+            background: white;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);   
+            padding: 20px;
+        }
+        /* Dim background overlay */
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        #button {
+            margin: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="overlay" onclick="hidePopup()"></div> <!-- Overlay to dim background -->
+    <div id="popup">
+        <img src="c:\Users\Hero\Pictures\Domist.png" class="picture-card2">
+        <h1 id="popup-title">Title</h1>
+        <div id="popup-desc">Desc</div>
+        <div id="popup-price">price</div>
+        <button onclick="hidePopup()">Close</button>
+    </div>
+    <div Class="heading">
+        <img src="c:\Users\Hero\Pictures\Domist.png" class="heading-content1">
+        <div class="heading-content2"><h3>Domist</h3></div>
+        <button id="engButton" class="heading-content3" onclick="changeLanguage('eng')">Eng</button>
+        <button id="thButton"  class="heading-content3" onclick="changeLanguage('th')">Thai</button>
+    </div>
+    <div class="classroom-card" onclick="showPopup(1)">
+        <img src="c:\Users\Hero\Pictures\Domist.png" class="picture-card1">
+        <div class="card-title" id="1">ร้านน้ำป้าขาว</div>
+        <div class="card-description" id="2">ขายน้ำปั่น ราคาประมาณ 20฿-40฿</div>
+        <div class="tags-boxes">
+            <div class="tags drinks">💧</div>
+            <div class="tags icecream">🍦</div>
+        </div>
+    </div>  
+    <div class="classroom-card" onclick="showPopup(2)">
+        <img src="c:\Users\Hero\Pictures\Domist.png" class="picture-card1">
+        <div class="card-title" id="3">ร้ายก๋วยเตี๋ยวสุดหล่อ</div>
+        <div class="card-description" id="4">ขายก๋วยเตี๋ยว เส้นเล็ก หมี่เหลือง เส้นแบนและกลม ราคา 35฿-40฿</div>
+        <div class="tags-boxes">
+            <div class="tags foods">🍲</div>
+        </div>
+    </div>
+    <div class="classroom-card" onclick="showPopup(3)">
+        <img src="c:\Users\Hero\Pictures\Domist.png" class="picture-card1">
+        <div class="card-title" id="5">ร้านข้าวราดแกง</div>
+        <div class="card-description" id="6">ขายข้าวราดแกง 1อย่าง30฿ 2อย่าง35฿</div>
+        <div class="tags-boxes">
+            <div class="tags foods">🍲</div>
+        </div>
+    </div>
+    <div class="classroom-card" onclick="showPopup(4)">
+        <img src="c:\Users\Hero\Pictures\Domist.png" class="picture-card1">
+        <div class="card-title" id="7">ร้านยำ</div>
+        <div class="card-description" id="8">???</div>
+        <div class="tags-boxes">
+            <div class="tags foods">🍲</div>
+        </div>
+    </div>
+    <div class="classroom-card" onclick="showPopup(5)">
+        <img src="c:\Users\Hero\Pictures\Domist.png" class="picture-card1">
+        <div class="card-title" id="9">ร้านขายของทอด</div>
+        <div class="card-description" id="10">ขายไก่ทอด นักเก็ต เฟรนช์ฟราย เครป ฯลฯ ราคาประมาณ 20฿-40฿</div>
+        <div class="tags-boxes">
+            <div class="tags snacks">🍪</div>
+            <div class="tags icecream">🍦</div>
+        </div>
+    </div>
+    <div class="classroom-card" onclick="showPopup(6)">
+        <img src="c:\Users\Hero\Pictures\Domist.png" class="picture-card1">
+        <div class="card-title" id="11">ร้านข้าวมันไก่</div>
+        <div class="card-description" id="12">ขายข้าวมันไก่ต้มและทอด ราคาประมาณ 35฿-40฿</div>
+        <div class="tags-boxes">
+            <div class="tags foods">🍲</div>
+        </div>
+    </div>
+    <div class="classroom-card" onclick="showPopup(7)">
+        <img src="c:\Users\Hero\Pictures\Domist.png" class="picture-card1">
+        <div class="card-title" id="13">ร้านน้ำหนุงหนิง</div>
+        <div class="card-description" id="14">ขายน้ำเปล่า และน้ำปั่น ราคา 20฿-40฿</div>
+        <div class="tags-boxes">
+            <div class="tags drinks">💧</div>
+        </div>
+    </div>
+
+    <script>
+        const boxText = {
+            th: ["ร้านน้ำป้าขาว", "ขายน้ำปั่น ราคาประมาณ 20฿-40฿", "ร้านก๋วยเตี๋ยวสุดหล่อ", "ขายก๋วยเตี๋ยว เส้นเล็ก หมี่เหลือง เส้นแบนและกลม ราคา 35฿-40฿", "ร้านข้าวราดแกง", "ขายข้าวราดแกง 1อย่าง30฿ 2อย่าง35฿", "ร้านยำ", "???", "ร้านขายของทอด", "ขายไก่ทอด นักเก็ต เฟรนช์ฟราย เครป ฯลฯ ราคาประมาณ 20฿-40฿", "ร้านข้าวมันไก่", "ขายข้าวมันไก่ต้มและทอด ราคาประมาณ 35฿-40฿", "ร้านน้ำหนุงหนิง", "ขายน้ำเปล่า และน้ำปั่น ราคา 20฿-40฿"],
+            eng: ["ร้านน้ำป้า", "yoo", "ร้านน้ำป้า", "yoo", "ร้านน้ำป้า", "yoo", "ร้านน้ำป้า", "yoo", "ร้านน้ำป้า", "yoo", "ร้านน้ำป้า", "yoo", "ร้านน้ำป้า", "yoo"],
+        }
+
+        const detailedText = {
+            th: ["yoo1", "yoo2", "yoo3", "yoo4", "yoo5", "yoo6", "yoo7"],
+            eng: ["yoooooo", "yoo", "yoo", "yoo", "yoo", "yoo", "yoo"],
+        }
+
+        function hidePopup() {
+            document.getElementById("popup").style.display = "none";
+            document.getElementById("overlay").style.display = "none";
+        }
+
+    function showPopup(num) {
+        let popupTitle = document.getElementById("popup-title");
+        let popupDesc  = document.getElementById("popup-desc");
+        let tranCheck = document.getElementById("1");
+        if (tranCheck.textContent == "ร้านน้ำป้าขาว") {
+            popupTitle.textContent = boxText.th[(num*2)-2];
+            popupDesc.textContent = detailedText.th[num-1];
+        } else {
+            popupTitle.textContent = boxText.eng[(num*2)-2];
+            popupDesc.textContent = detailedText.eng[num-1];
+        }
+        document.getElementById("popup").style.display = "block";
+        document.getElementById("overlay").style.display = "block";
+    }
+
+    function changeLanguage(language) {
+        for(let i = 0; i <= 13; i++) {
+            document.getElementById(i+1).textContent = boxText[language][i];
+        }
+        /*if (document.getElementById("title1").textContent = "ร้านน้ำป้า"); {
+            document.getElementById("engButton").style.backgroundColor = "green";
+            document.getElementById("thButton").style.backgroundColor = "red";
+        else;
+            document.getElementById("engButton").style.backgroundColor = "red";
+            document.getElementById("thButton").style.backgroundColor = "green";
+        } change color when change language system*/
+    }
+    </script>
+</body>
+</html>
