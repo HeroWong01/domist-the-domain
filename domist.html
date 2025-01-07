@@ -10,7 +10,7 @@
             font-family: Arial, sans-serif;
             margin: 0px;
             padding: 0px;
-            background-color: #f5f5f5;
+            background-color: #f6ffcc;
             display: flex;
             flex-wrap: wrap; /* Allows multiple rows */
             justify-content: start; /* Center cards horizontally */
@@ -36,6 +36,7 @@
             overflow: hidden;
             transition: transform 0.2s, box-shadow 0.2s;
         }
+
         .classroom-card img {
             min-width: 100%;
             min-height: 100%;
@@ -49,13 +50,6 @@
             min-width: 100%;
             min-height: 100%;
             object-fit: cover;
-        }
-
-        .picture-card2 {
-            min-width: 100%;
-            max-height: 30%;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
         }
 
         .card-title {
@@ -95,6 +89,17 @@
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6))
         }
 
+        .darkener2 {
+            z-index: 5;
+
+            top: 0%;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* 50% transparent black */
+            /*background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6))*/
+        }
+
         .heading {
             width: 100%;
             height: 60px;
@@ -121,8 +126,8 @@
 
         .tags {
             top: 40%;
-            min-width: 55px;
-            height: 30px;
+            min-width: 30px;
+            min-height: 30px;
             color: rgb(0, 0, 0);
             border-radius: 10px; /*Corner of the UI */
             display: flex; /* Use flexbox */
@@ -134,7 +139,7 @@
         }
 
         .drinks { /*💧*/
-            background-color: #48c5ff;
+            background-color: #3796c2;
         }
         .foods { /*🍲*/
             background-color: #ff4866;
@@ -148,8 +153,10 @@
         .fruits { /*🍎*/
             background-color: rgb(245, 255, 103);
         }
-        .building { /*🏢 🏬*/
+        .building { /*🟡 🏬*/
             background-color: grey;
+            padding-left: 5px;
+            padding-right: 5px;
         }
 
         .heading-content1 {
@@ -180,6 +187,41 @@
             border-radius: 5px; /* Optional: rounded corners */
         }
 
+        .popup-title {
+            z-index: 7;
+
+            font-size: 30px;
+            padding-left: 15px;
+            font-weight: bold;
+            position: absolute;
+            top: 3%;
+            color: white;
+        }
+
+        .popup-desc {
+            z-index: 7;
+
+            position: absolute;
+            font-size: 20px;
+            padding-left: 15px;
+            top: 15%;
+            color: white;
+        }
+
+        .popup-close-button {
+            z-index: 8;
+
+            min-width: 20px;
+            min-height: 20px;
+            border-radius: 5px;
+            position: absolute;
+            background-color: red;
+            border: 0px;
+            top: 2%;
+            right: 1%;
+            cursor: pointer;
+        }
+
         #popup {
             z-index: 4;
 
@@ -187,20 +229,26 @@
             width: 80%;
             height: 80%;
             background: white;
-            position: absolute;
+            position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);   
-            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             border-radius: 5px;
+            overflow: hidden;
+        }
+        #popup img {
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
         }
         /* Dim background overlay */
         #overlay {
             z-index: 3;
 
             display: none;
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -217,11 +265,12 @@
 <body>
     <div id="overlay" onclick="hidePopup()"></div> <!-- Overlay to dim background -->
     <div id="popup">
-        <img href="Picture/Window.jfif" class="picture-card2">
-        <h1 id="popup-title">Title</h1>
-        <div id="popup-desc">Desc</div>
-        <div id="popup-connection">connection</div>
-        <button onclick="hidePopup()">Close</button>
+        <img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/sudlor.jpg?raw=true">
+        <div class="darkener2"></div>
+        <div id="popup-title" class="popup-title">Title</div>
+        <div id="popup-desc" class="popup-desc">Desc</div>
+        <!--<div id="popup-connection" class="">connection</div> -->
+        <button onclick="hidePopup()" class="popup-close-button">X</button>
     </div>
     <div Class="heading">
         <img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/339690.jpg?raw=true" class="heading-content1">
@@ -235,9 +284,9 @@
         <div class="card-title" id="1">ร้านน้ำป้าขาว</div>
         <div class="card-description" id="2">ขายน้ำปั่น ราคาประมาณ 20฿-40฿</div>
         <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>
             <div class="tags drinks">💧</div>
             <div class="tags icecream">🍦</div>
-            <div class="tags building">🏢55ปี</div>
         </div>
     </div>  
     <div class="classroom-card" onclick="showPopup(2)">
@@ -246,8 +295,8 @@
         <div class="card-title" id="3">ร้ายก๋วยเตี๋ยวสุดหล่อ</div>
         <div class="card-description" id="4">ขายก๋วยเตี๋ยว เส้นเล็ก หมี่เหลือง เส้นแบนและกลม ราคา 35฿-40฿</div>
         <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>​
             <div class="tags foods">🍲</div>
-            <div class="tags building">🏢55ปี</div>
         </div>
     </div>
     <div class="classroom-card" onclick="showPopup(3)">
@@ -256,8 +305,8 @@
         <div class="card-title" id="5">ร้านข้าวราดแกง</div>
         <div class="card-description" id="6">ขายข้าวราดแกง 1อย่าง30฿ 2อย่าง35฿</div>
         <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>
             <div class="tags foods">🍲</div>
-            <div class="tags building">🏢55ปี</div>
         </div>
     </div>
     <div class="classroom-card" onclick="showPopup(4)">
@@ -266,19 +315,19 @@
         <div class="card-title" id="7">ร้านยำ</div>
         <div class="card-description" id="8">???</div>
         <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>
             <div class="tags foods">🍲</div>
-            <div class="tags building">🏢55ปี</div>
         </div>
     </div>
     <div class="classroom-card" onclick="showPopup(5)">
-        <img src="c:\Users\Hero\Pictures\Domist.png">
+        <img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/1736182083973.jpg?raw=true">
         <div class="darkener"></div>
         <div class="card-title" id="9">ร้านขายของทอด</div>
         <div class="card-description" id="10">ขายไก่ทอด นักเก็ต เฟรนช์ฟราย เครป ฯลฯ ราคาประมาณ 20฿-40฿</div>
         <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>
             <div class="tags snacks">🍟</div>
             <div class="tags icecream">🍦</div>
-            <div class="tags building">🏢55ปี</div>
         </div>
     </div>
     <div class="classroom-card" onclick="showPopup(6)">
@@ -287,8 +336,8 @@
         <div class="card-title" id="11">ร้านข้าวมันไก่</div>
         <div class="card-description" id="12">ขายข้าวมันไก่ต้มและทอด ราคาประมาณ 35฿-40฿</div>
         <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>
             <div class="tags foods">🍲</div>
-            <div class="tags building">🏢55ปี</div>
         </div>
     </div>
     <div class="classroom-card" onclick="showPopup(7)">
@@ -297,8 +346,8 @@
         <div class="card-title" id="13">ร้านน้ำหนุงหนิง</div>
         <div class="card-description" id="14">ขายน้ำเปล่า และน้ำปั่น ราคา 20฿-40฿</div>
         <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>
             <div class="tags drinks">💧</div>
-            <div class="tags building">🏢55ปี</div>
         </div>
     </div>
     <div class="classroom-card" onclick="showPopup(8)">
@@ -307,8 +356,8 @@
         <div class="card-title" id="15">ร้านน้ำหนุงหนิง</div>
         <div class="card-description" id="16">ขายน้ำเปล่า และน้ำปั่น ราคา 20฿-40฿</div>
         <div class="tags-boxes">
+            <div class="tags building">🏬50ปี</div>​
             <div class="tags foods">🍲</div>
-            <div class="tags building">🏬50ปี</div>
         </div>
     </div>
     <div class="classroom-card" onclick="showPopup(9)">
@@ -317,8 +366,8 @@
         <div class="card-title" id="17">ร้านสุดหล่อ2 (ฝั่งขวาโรงอาหาร)</div>
         <div class="card-description" id="18">ขายก๋วยเตี๋ยว เส้นเล็ก หมี่เหลือง เส้นแบนและกลม ราคา 35฿-40฿</div>
         <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>
             <div class="tags foods">🍲</div>
-            <div class="tags building">🏢55ปี</div>
         </div>
     </div>
     <div class="classroom-card" onclick="showPopup(10)">
@@ -327,8 +376,8 @@
         <div class="card-title" id="19">ร้านน้ำป้าตาล</div>
         <div class="card-description" id="20">ขายน้ำแก้วละ 15฿ เพิ่มเยลลี่เม็ดละ 1฿</div>
         <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>
             <div class="tags drinks">💧</div>
-            <div class="tags building">🏢55ปี</div>
         </div>
     </div>
     <div class="classroom-card" onclick="showPopup(11)">
@@ -337,8 +386,8 @@
         <div class="card-title" id="21">ร้านน้ำหนุงหนิง</div>
         <div class="card-description" id="22">ขายน้ำเปล่า และน้ำปั่น ราคา 20฿-40฿</div>
         <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>
             <div class="tags foods">🍲</div>
-            <div class="tags building">🏢55ปี</div>
         </div>
     </div>
     <div class="classroom-card" onclick="showPopup(12)">
@@ -347,8 +396,8 @@
         <div class="card-title" id="23">ร้านปลื้มราดหน้าหมูหมัก</div>
         <div class="card-description" id="24">ขายราดหน้า สปาเก็ตตีคาโบนารา ซุบ ผัดมักกะโรนี ราคา 35-40฿</div>
         <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>
             <div class="tags foods">🍲</div>
-            <div class="tags building">🏢55ปี</div>
         </div>
     </div>
     <div class="classroom-card" onclick="showPopup(13)">
@@ -357,9 +406,9 @@
         <div class="card-title" id="25">ร้าน P'Pop P'Son ผลไม้สด ของทอด</div>
         <div class="card-description" id="26">ขายผลไม้สด และของทอด ราคา 20฿ ขึ้นไป</div>
         <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>
             <div class="tags snacks">🍟</div>
             <div class="tags fruits">🍎</div>
-            <div class="tags building">🏢55ปี</div>
         </div>
     </div>
     <div class="classroom-card" onclick="showPopup(14)">
@@ -368,8 +417,8 @@
         <div class="card-title" id="27">ผลไม้ปั่นร้านป้าติ๋ม</div>
         <div class="card-description" id="28">เมนูเย็น 20-25฿ เมนูปั่น 25-30฿ เพิ่มท็อปปิ้ง อย่างละ 5฿</div>
         <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>
             <div class="tags drinks">💧</div>
-            <div class="tags building">🏢55ปี</div>
         </div>
     </div>
 
@@ -385,9 +434,16 @@
         }
 
         const detailedText = {
-            th: ["ขายน้ำปั่น ราคาประมาณ 20฿-40฿", "ขายก๋วยเตี๋ยว เส้นเล็ก หมี่เหลือง เส้นแบนและกลม ราคา 35฿-40฿", "ขายข้าวราดแกง 1อย่าง30฿ 2อย่าง35฿", "yoo4", "ขายไก่ทอด นักเก็ต เฟรนช์ฟราย เครป ฯลฯ ราคาประมาณ 20฿-40฿", "ขายไก่ทอด นักเก็ต เฟรนช์ฟราย เครป ฯลฯ ราคาประมาณ 20฿-40฿", "ขายน้ำเปล่า และน้ำปั่น ราคา 20฿-40฿"],
+            th: ["ขายน้ำปั่น ราคาประมาณ 20฿-40฿", "ขายก๋วยเตี๋ยว เส้นเล็ก หมี่เหลือง เส้นแบนและกลม ราคา 35฿-40฿", "ขายข้าวราดแกง 1อย่าง30฿ 2อย่าง35฿", "yoo4", 
+            "ขายไก่ทอด นักเก็ต เฟรนช์ฟราย เครป ฯลฯ ราคาประมาณ 20฿-40฿", "ขายไก่ทอด นักเก็ต เฟรนช์ฟราย เครป ฯลฯ ราคาประมาณ 20฿-40฿", "ขายน้ำเปล่า และน้ำปั่น ราคา 20฿-40฿", 
+            "ร้านอาหารตามสั่ง ทำได้เกือบหมด ราคาตั้งแต่ 35฿-80฿", "ขายก๋วยเตี๋ยว เส้นเล็ก หมี่เหลือง เส้นแบนและกลม ราคา 35฿-40฿", "ขายน้ำแก้วละ 15฿ เพิ่มเยลลี่เม็ดละ 1฿", 
+            "ขายข้าวราดแกงและหมูกรอบราคา 30-40฿", "ขายราดหน้า สปาเก็ตตีคาโบนารา ซุบ ผัดมักกะโรนี ราคา 35-40฿", "ขายผลไม้สด และของทอด ราคา 20฿ ขึ้นไป", "เมนูเย็น 20-25฿ เมนูปั่น 25-30฿ เพิ่มท็อปปิ้ง อย่างละ 5฿"],
             eng: ["yoooooo", "yoo", "yoo", "yoo", "yoo", "yoo", "yoo"],
         }
+
+        const rating = [3, 4, 5, 3, 4, 5, 3, 4, 5, 3, 4, 5, 3, 4, 5]
+
+        const pictureList = {}
 
         function hidePopup() {
             document.getElementById("popup").style.display = "none";
@@ -404,6 +460,10 @@
         } else {
             popupTitle.textContent = boxText.eng[(num*2)-2];
             popupDesc.textContent = detailedText.eng[num-1];
+        }
+        popupTitle.innerHTML += ' ';
+        for(let i = 1; i <= rating[num-1]; i++) {
+            popupTitle.innerHTML += '⭐';
         }
         document.getElementById("popup").style.display = "block";
         document.getElementById("overlay").style.display = "block";
