@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, Vertical">
+    <title>Domist the store</title>
+    <style>
+        /*ATTENTION CODERS: THIS CODE ISN'T OPTIMIZED WHICH MEANS THAT IT MIGHT HURT YOUR EYES, YOU HAVE BEEN WARNED :D */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            padding: 0px;
+            background-color: #ffd8d8;
+            display: flex;
+            -webkit-tap-highlight-color: transparent;
+            flex-wrap: wrap; /* Allows multiple rows */
+            justify-content: start; /* Center cards horizontally */
+            /* gap: 20px;  Adds spacing between cards */
+        }
+
+        .classroom-card {
+            z-index: 0;
+            
+            position: relative;
+            width: 380px;
+            height: 250px;
+            background-color: rgb(233, 224, 204);
+            color: rgb(0, 0, 0);
+            border-radius: 10px; /*Corner of the UI */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            padding: 0px;
+            margin: 10px;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .classroom-card img {
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+        }
+        .classroom-card:hover {
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .picture-card1 {
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+        }
+
+        .card-title {
+            z-index: 2;
+            
+            position: absolute; /* Position relative to .classroom-card */
+            top: 10px; /* Distance from the top of the card */
+            left: 10px; /* Distance from the left of the card */
+            font-size: 22px;
+            padding: 5px;
+            font-weight: bold;
+            color: white; /* Ensure visibility against the image */
+            border-radius: 5px; /* Optional: rounded corners */
+        }
+
+        .frame {
+            z-index: 0; /*<license> Domist.html made by Domism group (Hero_Wong) </license>*/
+            
+            width: 3px;
+            height: 30px;
+            position: absolute;
+            left: 201px;
+            transform: rotate(20deg); 
+            background-color: rgb(204, 133, 0); /* Ensure visibility against the image */
+            display: flex;
+            padding: 0px;
+            margin: 10px; /* Distance from all side of the card */
+            border-radius: 5px;
+        }
+        
+        .sort-card {
+            z-index: 2;
+            
+            position: absolute;
+            width: 280px;
+            height: 120px;
+            background-color: rgb(255, 255, 255, 0.9);
+            border-radius: 10px; /*Corner of the UI */
+            display: none;
+            padding: 0px;
+            margin-top: 75px;
+            margin-left: 15px;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card-description {
+            z-index: 2;
+            
+            position: absolute; /* Position relative to .classroom-card */
+            top: 70px;
+            left: 10px; /* Distance from the left of the card */
+            font-size: 18px;
+            padding: 5px;
+            color: white; /* Ensure visibility against the image */
+            border-radius: 5px; /* Optional: rounded corners */
+        }
+
+        .darkener {
+            z-index: 2;
+
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.2); /* 50% transparent black */
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
+        }
+
+        .darkener2 {
+            z-index: 5;
+
+            top: 0%;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(99, 76, 0, 0.5); /* 50% transparent black */
+            /*background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6))*/
+        }
+
+        .heading {
+            width: 100%;
+            height: 60px;
+            display: flex;
+            /*border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px; */
+            align-items: center; /* Vertical */
+            background-color: orange;
+            background: linear-gradient(to right, rgba(255, 165, 0, 1), rgb(211, 137, 0))
+        }
+
+        .tags-boxes {
+            z-index: 2;
+            
+            position: absolute;
+            align-self: flex-end;
+            align-content: center;
+            display: flex;
+            top: 83%;
+            flex-direction: row;
+            padding: 0px;
+            width: 100%;
+            height: 40px;
+        }
+
+        .tags-boxes2 {
+            z-index: 2;
+            
+            position: absolute;
+            display: flex;
+            top: 0%;
+            justify-content: center;
+            flex-direction: row;
+            padding: 0px;
+            width: 100%;
+            height: 40px;
+        }
+
+        .tags-boxes3 {
+            z-index: 2;
+            
+            position: absolute;
+            display: flex;
+            top: 35px;
+            justify-content: center;
+            flex-direction: row;
+            padding: 0px;
+            width: 100%;
+            height: 40px;
+        }
+
+        .tags {
+            top: 40%;
+            min-width: 30px;
+            min-height: 30px;
+            color: rgb(0, 0, 0);
+            border-radius: 10px; /*Corner of the UI */
+            display: flex; /* Use flexbox */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            margin: 5px;
+            align-items: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .drinks { /*💧*/
+            background-color: #3796c2;
+        }
+        .foods { /*🍲*/
+            background-color: #ff4866;
+        }
+        .snacks { /*🍟*/
+            background-color: #d3b38d;
+        }
+        .icecream { /*🍦*/
+            background-color: #fefff5;
+        }
+        .fruits { /*🍎*/
+            background-color: #f5ff67;
+        }
+        .building { /*🏬*/
+            background-color: grey;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .heading-content1 {
+            margin-left: 20px;
+            max-width: 50px;
+            max-height: 50px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .heading-content2 {
+            padding-left: 20px;
+        }
+        
+        .heading-content3 {
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            background: rgb(255, 165, 0, 0);
+            width: 40px;
+            min-height: 20px;
+            align-content: center;
+        }
+
+        .heading-content4 {
+            max-width: 50px;
+            max-height: 50px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .heading-content5 {
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            background: rgb(255, 165, 0, 0);
+            width: 40px;
+            min-height: 20px;
+            align-content: center;
+        }
+
+        .heading-content3:hover {
+            background: rgb(255, 195, 83, 0.8);
+        }
+
+        .heading-content5:hover {
+            background: rgb(255, 195, 83, 0.8);
+        }
+
+        .testing1 { /*test stuff here */
+            position: absolute; /* Position relative to .classroom-card */
+            top: 10px; /* Distance from the top of the card */
+            left: 10px; /* Distance from the left of the card */
+            font-size: 22px;
+            padding: 5px;
+            font-weight: bold;
+            color: black; /* Ensure visibility against the image */
+            border-radius: 5px; /* Optional: rounded corners */
+        }
+
+        .popup-title {
+            z-index: 7;
+
+            font-size: 30px;
+            padding-left: 15px;
+            font-weight: bold;
+            position: absolute;
+            top: 3%;
+            color: white;
+        }
+
+        .popup-price {
+            z-index: 7;
+
+            position: absolute;
+            font-size: 20px;
+            padding-left: 15px;
+            top: 100px;
+            left: 0px;
+            color: #ffc370;
+        }
+        
+        .popup-price2 {
+            z-index: 7;
+
+            position: absolute;
+            font-size: 20px;
+            padding-left: 15px;
+            top: 130px;
+            left: 0px;
+            color: #99e000;
+        }
+
+        .popup-desc {
+            z-index: 7;
+
+            position: absolute;
+            font-size: 20px;
+            padding-left: 15px;
+            top: 160px;
+            color: white;
+        }
+
+        .popup-comment {
+            z-index: 9;
+
+            position: absolute;
+            border-radius: 10px;
+            width: 100%;
+            height: 100%;
+            top:0%;
+            display: none;
+            background-color: white;
+        }
+
+        .popup-preComment {
+            z-index: 7;
+
+            position: absolute;
+            border-radius: 10px;
+            background-color: rgb(3, 173, 0);
+            font-size: 20px;
+            margin: 15px;
+            padding: 5px;
+            bottom: 0%;
+            color: white;
+            cursor: pointer;
+        } 
+
+        .popup-close-button {
+            z-index: 8;
+
+            min-width: 20px;
+            min-height: 20px;
+            border-radius: 15px;
+            position: absolute;
+            background-color: red;
+            border: 0px;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+        }
+
+        .popup-close-button2 {
+            z-index: 10;
+
+            min-width: 20px;
+            min-height: 20px;
+            border-radius: 15px;
+            position: absolute;
+            background-color: red;
+            border: 0px;
+            top: 5px;
+            right: 5px; 
+            cursor: pointer;
+        }
+ 
+
+        .sort-tags {
+            min-width: 30px;
+            min-height: 30px;
+            color: rgb(0, 0, 0);
+            border-radius: 10px; /*Corner of the UI*/
+            border-color: rgb(0, 0, 0);
+            border-style: solid;
+            border-width: 1px;
+            display: flex; /* Use flexbox */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            margin: 5px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .sort-content1 {
+            position: relative;
+            padding-top: 70px;
+            color: rgb(0, 0, 0);
+            justify-content: center; /* Center horizontally */
+            text-align: center;
+        }
+
+        .clickable {
+            cursor: pointer;
+        }
+        
+        .comment-content1 {
+            z-index: 10;
+        
+            color: black;
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .comment-content2 {
+            z-index: 10;
+        
+            color: black;
+            position: absolute;
+            top: 100px;
+            left: 30px;
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        .comment-content3 {
+            z-index: 10;
+        
+            color: black;
+            position: absolute;
+            top: 180px;
+            left: 30px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .comment-pad1 {
+            top: 210px;
+        }
+        
+        .comment-pad2 {
+            top: 240px;
+        }
+        
+        .comment-pad3 {
+            top: 270px;
+        }
+        
+        .comment-pad4 {
+            top: 300px;
+        }
+
+        .checky01 {
+            z-index: 0;
+            color: rgba(0, 0, 0, 0.2);
+            display: flex;
+
+            position: absolute;
+            top: 190px;
+            left: 85px;
+        }
+        
+        .rater-all {
+            z-index: 10;
+            
+            position: absolute;
+            bottom: 0px;
+            padding: 0px;
+            margin-left: 5%;
+            margin-bottom: 5px;
+            width: 90%;
+            height: 40px;
+            border-radius: 20px;
+            border-color: rgb(169, 169, 169);
+            border-style: solid;
+            border-width: 1px;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        
+        .rater-content1 {
+            position: absolute;
+            right: 0px;
+            margin: 5px;
+            border-radius: 20px;
+            min-width: 70px;
+            min-height: 30px;
+            background-color: rgb(7, 53, 219);
+            color: white;
+            border-style: none;
+            display: none;
+            align-content: center;   
+            text-align: center;
+        }
+        
+        .raterg-content1:hover {
+            background-color: rgb(7, 53, 219, 0.4);
+        }
+        
+        .rater-content2 {
+            z-index: 11;
+        
+            position: absolute;
+            top: 8px;
+            left: 10px;
+            color: black;
+            font-size: 20px;
+        }
+        
+        .rate-pad1 {
+            left: 40px;
+        }
+        
+        .rate-pad2 {
+            left: 70px;
+        }
+        
+        .rate-pad3 {
+            left: 100px;
+        }
+        
+        .rate-pad4 {
+            left: 130px;
+        }
+        
+        .input-content {
+            background-color: rgb(230, 230, 230);
+            border-style: none;
+        }
+
+        .emergency-storage {
+            display: none;
+        }        
+
+        #popup {
+            z-index: 4;
+
+            display: none;
+            width: 90%;
+            height: 60%;
+            background: white;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        #popup img {
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+        }
+        /* Dim background overlay */
+        #overlay {
+            z-index: 3;
+
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        #button {
+            margin: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="overlay" onclick="hidePopup()"></div> <!-- Overlay to dim background -->
+    <div id="dataStorage1" class="emergency-storage"></div>
+    <div id="dataStorage2" class="emergency-storage"></div>
+    <div id="dataStorage3" class="emergency-storage"></div>
+    <div id="dataStorage4" class="emergency-storage"></div>
+    <div id="dataStorage5" class="emergency-storage"></div>
+    <div id="dataStorage6" class="emergency-storage"></div>
+    <div id="dataStorage7" class="emergency-storage"></div>
+    <div id="dataStorage8" class="emergency-storage"></div>
+    <div id="dataStorage9" class="emergency-storage"></div>
+    <div id="dataStorage10" class="emergency-storage"></div>
+    <div id="dataStorage11" class="emergency-storage"></div>
+    <div id="dataStorage12" class="emergency-storage"></div>
+    <div id="dataStorage13" class="emergency-storage"></div>
+    <div id="dataStorage14" class="emergency-storage"></div>
+    <div id="popup">
+        <img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/sudlor.jpg?raw=true">
+        <div class="darkener2"></div>
+        <div id="popup-title" class="popup-title">Title</div>
+        <a id="popup-price" class="popup-price" href="tel:0650750773">Connection</a>
+        <a id="popup-price2" class="popup-price2" href="tel:0650750773">Connection2</a>
+        <div id="popup-desc" class="popup-desc">Desc</div>
+        <div id="31" class="popup-preComment" onclick="showPopComment()">Ratings</div>
+        <div id="popup-comment" class="popup-comment">
+            <div id="32" class="comment-content1">Ratings</div>
+            <div id="avgRating" class="comment-content2">5.0 ⭐</div>
+            <div id="allRating5" class="comment-content3">
+                0 ⭐⭐⭐⭐⭐ <br>
+            </div>
+            <div id="allRating4" class="comment-content3 comment-pad1">
+                0 ⭐⭐⭐⭐ <br>
+            </div>
+            <div id="allRating3" class="comment-content3 comment-pad2">
+                0 ⭐⭐⭐ <br>
+            </div>
+            <div id="allRating2" class="comment-content3 comment-pad3">
+                0 ⭐⭐ <br>
+            </div>
+            <div id="allRating1" class="comment-content3 comment-pad4">
+                0 ⭐ <br>
+            </div>
+            <div class="rater-all">
+                <div id="ratee1" class="rater-content2" onclick="rater(1)"> ☆
+                </div>
+                <div id="ratee2" class="rater-content2 rate-pad1 clickable" onclick="rater(2)"> ☆​
+                </div>
+                <div id="ratee3" class="rater-content2 rate-pad2 clickable" onclick="rater(3)"> ☆
+                </div>
+                <div id="ratee4" class="rater-content2 rate-pad3 clickable" onclick="rater(4)"> ☆
+                </div>
+                <div id="ratee5" class="rater-content2 rate-pad4 clickable" onclick="rater(5)"> ☆
+                </div>
+                <div id="33" class="rater-content1 clickable" onclick="submit()">Submit</div>
+            </div>
+            <button onclick="hidePopComment()" class="popup-close-button2">X</button>
+        </div>
+        <button onclick="hidePopup()" class="popup-close-button">X</button>
+    </div>  
+    
+    
+    <div id="Sorto" class="sort-card">
+        <div class="tags-boxes2">
+            <div id="tag55" onclick="sortCheck('55')" class="clickable sort-tags building">🌕โดมทอง</div>
+            <div id="tag50" onclick="sortCheck('50')" class="clickable sort-tags building">🏬50ปี</div>
+            <div id="tag-food" onclick="sortCheck('foods')" class="clickable sort-tags foods">🍲</div>
+            <div id="tag-drink" onclick="sortCheck('drinks')" class="clickable sort-tags drinks">💧</div>
+        </div>
+        <div class="tags-boxes3">
+            <div id="tag-icecream" onclick="sortCheck('icecream')" class="clickable sort-tags icecream">🍦</div>
+            <div id="tag-snacks" onclick="sortCheck('snacks')" class="clickable sort-tags snacks">🍟</div>
+            <div id="tag-fruits" onclick="sortCheck('fruits')" class="clickable sort-tags fruits">🍎</div>
+        </div>
+        <p id="30" class="sort-content1">Click on what you wanted to eat!</p>
+    </div>
+    <div Class="heading">
+        <a class="heading-content1" onclick="reloade()"><img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/339690.jpg?raw=true" class="heading-content4"></a>
+        <div class="heading-content2"><h3>Domist</h3></div>
+        <button id="engButton" class="heading-content3 clickable" onclick="changeLanguage('eng')">Eng</button>
+        <div class="frame"></div>
+        <button id="thButton" class="heading-content5 clickable" onclick="changeLanguage('th')">Thai</button>
+        <button id="sortButton" class="heading-content3 clickable" onclick="showSort()">Sort</button>
+    </div>
+    <div class="checky01">
+        <p id="29">No Stores found 😔</p>
+    </div>
+    <div id="Class1" class="classroom-card" onclick="showPopup(1)" data-tags="55 drinks icecream">
+        <img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/white.jpg?raw=true">
+        <div class="darkener"></div>
+        <div class="card-title" id="1">ร้านน้ำป้าขาว</div>
+        <div class="card-description" id="2">ขายน้ำปั่น ราคาประมาณ 20฿-40฿</div>
+        <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>
+            <div class="tags drinks">💧</div>
+            <div class="tags icecream">🍦</div>
+        </div>
+    </div>  
+    <div id="Class2" class="classroom-card" onclick="showPopup(2)" data-tags="55 foods">
+        <img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/sudlor.jpg?raw=true">
+        <div class="darkener"></div>
+        <div class="card-title" id="3">ร้ายก๋วยเตี๋ยวสุดหล่อ</div>
+        <div class="card-description" id="4">ขายก๋วยเตี๋ยว เส้นเล็ก หมี่เหลือง เส้นแบนและกลม ราคา 35฿-40฿</div>
+        <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>​
+            <div class="tags foods">🍲</div>
+        </div>
+    </div>
+    <div id="Class3" class="classroom-card" onclick="showPopup(3)" data-tags="55 foods">
+        <img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/339693_0.jpg?raw=true">
+        <div class="darkener"></div>
+        <div class="card-title" id="5">ร้านข้าวราดแกง</div>
+        <div class="card-description" id="6">ขายข้าวราดแกง 1อย่าง30฿ 2อย่าง35฿</div>
+        <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>
+            <div class="tags foods">🍲</div>
+        </div>
+    </div>
+    <div id="Class4" class="classroom-card" onclick="showPopup(4)" data-tags="55 foods">
+        <img src="https://raw.githubusercontent.com/HeroWong01/domist-the-domain/refs/heads/main/Picture/messageImage_1738676711149.jpg">
+        <div class="darkener"></div>
+        <div class="card-title" id="7">ร้านยำ</div>
+        <div class="card-description" id="8">???</div>
+        <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>
+            <div class="tags foods">🍲</div>
+        </div>
+    </div>
+    <div id="Class5" class="classroom-card" onclick="showPopup(5)" data-tags="55 snacks icecream">
+        <img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/1736182083973.jpg?raw=true">
+        <div class="darkener"></div>
+        <div class="card-title" id="9">ร้านขายของทอด</div>
+        <div class="card-description" id="10">ขายไก่ทอด นักเก็ต เฟรนช์ฟราย เครป ฯลฯ ราคาประมาณ 20฿-40฿</div>
+        <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>
+            <div class="tags snacks">🍟</div>
+            <div class="tags icecream">🍦</div>
+        </div>
+    </div>
+    <div id="Class6" class="classroom-card" onclick="showPopup(6)" data-tags="55 foods">
+        <img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/munkai.jpg?raw=true">
+        <div class="darkener"></div>
+        <div class="card-title" id="11">ร้านข้าวมันไก่</div>
+        <div class="card-description" id="12">ขายข้าวมันไก่ต้มและทอด ราคาประมาณ 35฿-40฿</div>
+        <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>
+            <div class="tags foods">🍲</div>
+        </div>
+    </div>
+    <div id="Class7" class="classroom-card" onclick="showPopup(7)" data-tags="55 drinks">
+        <img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/339697_0.jpg?raw=true" class="picture-card1">
+        <div class="darkener"></div>
+        <div class="card-title" id="13">ร้านน้ำหนุงหนิง</div>
+        <div class="card-description" id="14">ขายน้ำเปล่า และน้ำปั่น ราคา 20฿-40฿</div>
+        <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>
+            <div class="tags drinks">💧</div>
+        </div>
+    </div>
+    <div id="Class8" class="classroom-card" onclick="showPopup(8)" data-tags="50 foods">
+        <img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/Pa%20Nong.jpg?raw=true" class="picture-card1">
+        <div class="darkener"></div>
+        <div class="card-title" id="15">ร้านน้ำหนุงหนิง</div>
+        <div class="card-description" id="16">ขายน้ำเปล่า และน้ำปั่น ราคา 20฿-40฿</div>
+        <div class="tags-boxes">
+            <div class="tags building">🏬50ปี</div>​
+            <div class="tags foods">🍲</div>
+        </div>
+    </div>
+    <div id="Class9" class="classroom-card" onclick="showPopup(9)" data-tags="55 foods">
+        <img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/339708_0.jpg?raw=true" class="picture-card1">
+        <div class="darkener"></div>
+        <div class="card-title" id="17">ร้านสุดหล่อ2 (ฝั่งขวาโรงอาหาร)</div>
+        <div class="card-description" id="18">ขายก๋วยเตี๋ยว เส้นเล็ก หมี่เหลือง เส้นแบนและกลม ราคา 35฿-40฿</div>
+        <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>
+            <div class="tags foods">🍲</div>
+        </div>
+    </div>
+    <div id="Class10" class="classroom-card" onclick="showPopup(10)" data-tags="55 drinks">
+        <img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/339704_0.jpg?raw=true" class="picture-card1">
+        <div class="darkener"></div>
+        <div class="card-title" id="19">ร้านน้ำป้าตาล</div>
+        <div class="card-description" id="20">ขายน้ำแก้วละ 15฿ เพิ่มเยลลี่เม็ดละ 1฿</div>
+        <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>
+            <div class="tags drinks">💧</div>
+        </div>
+    </div>
+    <div id="Class11" class="classroom-card" onclick="showPopup(11)" data-tags="55 foods">
+        <img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/339709_0.jpg?raw=true" class="picture-card1">
+        <div class="darkener"></div>
+        <div class="card-title" id="21">ร้านน้ำหนุงหนิง</div>
+        <div class="card-description" id="22">ขายน้ำเปล่า และน้ำปั่น ราคา 20฿-40฿</div>
+        <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>
+            <div class="tags foods">🍲</div>
+        </div>
+    </div>
+    <div id="Class12" class="classroom-card" onclick="showPopup(12)" data-tags="55 foods">
+        <img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/339702_0.jpg?raw=true" class="picture-card1">
+        <div class="darkener"></div>
+        <div class="card-title" id="23">ร้านปลื้มราดหน้าหมูหมัก</div>
+        <div class="card-description" id="24">ขายราดหน้า สปาเก็ตตีคาโบนารา ซุบ ผัดมักกะโรนี ราคา 35-40฿</div>
+        <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>
+            <div class="tags foods">🍲</div>
+        </div>
+    </div>
+    <div id="Class13" class="classroom-card" onclick="showPopup(13)" data-tags="55 snacks fruits">
+        <img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/339701_0.jpg?raw=true" class="picture-card1">
+        <div class="darkener"></div>
+        <div class="card-title" id="25">ร้าน P'Pop P'Son ผลไม้สด ของทอด</div>
+        <div class="card-description" id="26">ขายผลไม้สด และของทอด ราคา 20฿ ขึ้นไป</div>
+        <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>
+            <div class="tags snacks">🍟</div>
+            <div class="tags fruits">🍎</div>
+        </div>
+    </div>
+    <div id="Class14" class="classroom-card" onclick="showPopup(14)" data-tags="55 drinks">
+        <img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/339699_0.jpg?raw=true" class="picture-card1">
+        <div class="darkener"></div>
+        <div class="card-title" id="27">ผลไม้ปั่นร้านป้าติ๋ม</div>
+        <div class="card-description" id="28">เมนูเย็น 20-25฿ เมนูปั่น 25-30฿ เพิ่มท็อปปิ้ง อย่างละ 5฿</div>
+        <div class="tags-boxes">
+            <div class="tags building">🌕โดมทอง</div>
+            <div class="tags drinks">💧</div>
+        </div>
+    </div>
+
+    <script>
+        const boxText = { /*even is store's name, odd is store's description*/
+            th: ["ร้านน้ำป้าขาว", "ขายน้ำปั่น ราคาประมาณ 20฿-40฿", "ร้านก๋วยเตี๋ยวสุดหล่อ", "ขายก๋วยเตี๋ยว เส้นเล็ก หมี่เหลือง เส้นแบนและกลม ราคา 35฿-40฿", 
+            "ร้านข้าวราดแกง", "ขายข้าวราดแกง 1อย่าง30฿ 2อย่าง35฿", "ร้าน Zeed ปากบาน", "ร้านยำ มีเส้นแก้ว เส้นมาม่า เวุ้นเส้น ฯลฯ", "ร้านขายของทอด", "ขายไก่ทอด นักเก็ต เฟรนช์ฟราย เครป ฯลฯ ราคาประมาณ 20฿-40฿", 
+            "ร้านข้าวมันไก่", "ขายข้าวมันไก่ต้มและทอด ราคาประมาณ 35฿-40฿", "ร้านน้ำหนุงหนิง", "ขายน้ำเปล่า และน้ำปั่น ราคา 20฿-40฿", "ร้านป้าน้อง", "ร้านอาหารตามสั่ง ทำได้เกือบหมด ราคาตั้งแต่ 35฿-80฿", 
+            "ร้านสุดหล่อ2", "ขายก๋วยเตี๋ยว เส้นเล็ก หมี่เหลือง เส้นแบนและกลม ราคา 35฿-40฿","ร้านน้ำป้าตาล", "ขายน้ำแก้วละ 15฿ เพิ่มเยลลี่เม็ดละ 1฿", "ร้านหมูกรอบกับข้าวแกง", "ขายข้าวราดแกงและหมูกรอบราคา 30-40฿", "ร้านปลื้มราดหน้าหมูหมัก", 
+            "ขายราดหน้า สปาเก็ตตีคาโบนารา ซุบ ผัดมักกะโรนี ราคา 35-40฿", "P'Pop, Son ผลไม้ ของทอด", "ขายผลไม้สด และของทอด ราคา 20฿ ขึ้นไป", 
+            "ผลไม้ปั่นร้านป้าติ๋ม", "เมนูเย็น 20-25฿ เมนูปั่น 25-30฿ เพิ่มท็อปปิ้ง อย่างละ 5฿", "ไม่พบร้านที่ต้องการหา 😔", "เลือกประเภทอาหารที่อยากทานได้เลย! 😋", "คะแนน⭐", "คะแนน", "ส่ง"],
+            eng: ["Pa Kaow's drink", "Smoothies and sodas avaliable for 20฿-40฿", "Sud Lhor Noodle", "Offering every type of noodle with delicious tastes 35฿+", "Curry store", "Selling curry with 1 kind for 30฿ or 2 kinds for 35฿", "Zeed spicy salad", "Spicy and delicious, comes with glass noodle and many more", "Appetizer of Dome Thong", "Every snacks and appetizer you coukd find is here! 20฿-40฿", "Number2 munkai", "Rice with chicken and fried chicken both for 35฿", "Nung Ning Drink", "smoothies avaliable for 20฿-40฿", "Pa Nong 👑", "'Made to order' store and special curry 35฿-80฿", "Sud Lhor the second", "Just like the first store with more range of noodle taste 35฿-40฿", "Pa Tarn Drink",
+             "colored water and jellies 1฿ each", "Curry + Crispy pork", "Pork and more avaliable from 30฿-40฿, yes with curry also", "Pleum's marinated pork noodles.", "Selling Instant noodle, spaghetti, and Cabonara for 35฿-45฿", "P'pop P'son snacks and fruits", "Another snack store that also sell fruits", "Tim's smoothies'", "Cold and Smoothies drinks from 20฿-30฿, with topping +5฿", "No Stores found 😔", "Choose what to eat! 😋", "Rating⭐", "Rating", "Submit"],
+        }
+
+        const detailedText = {
+            th: ["ร้านป้ำขาว ร้านน้ำที่ดังที่สุดในเตรียมอุดมศึกษา เป็นหนึ่งในร้านสำคัญของโดมทอง", "ร้านสุดหล่อ1 ร้านที่ทุกคนสามารถตักเกี๊ยวได้ได้ไม่อั้น สุดจะเรียกเราว่า สุดหล่อ ทุกครั้ง", "หนึ่งในร้านข้าวแกงที่ราคาคุ้มค่าที่สุด ป้าหวานขายหมูปิ้งอีกด้วย", "ร้านยำที่มีความพิเศษคือ มีเส้นแก้ว สามารถสั่งล่วงหน้าได้", 
+            "ร้านขายของทอดชื่อดังในโดมทอง มีขายตั้งแต่เฟรนช์ฟรายจนถึงไก่ชีส", "ข้าวมันไก่ร้านนี้จะให้เราตักน้ำซุปและแตงกวาเอง ซึ่งถึงว่าแปลกตาในบรรดาร้านโดมทอง", 
+            "ร้านริมโดมทอง ที่นักเรียนนิยมมาซื้อระหว่างพัก", "ร้านอาหารตามสั่งร้านดังแห่งเตรียมอุดม เปิดแม้กระทั่งช่วงปิดเทอมให้เด็กกิจกรรมได้มาแวะกินได้ สามารถสั่งผ่านไลน์ได้", "สุดหล่อ2 สาขาของสุดหล่อที่มีก๋วยเตี๋ยวน้ำตก", 
+            "ร้านน้ำที่ป้าสามารถผสมน้ำได้ทุกอย่าง ราคาตายตัวที่15บาท", "ร้านหมูกรอบที่ตอนเย็นขายไข่เจียวด้วย มีเครื่องเยอะมาก", "ร้านนี้ไม่ดัง", "ร้านขายผลไม้และของทอดต่างๆ", "ป้าติ๋มขายผลไม่ปั่น 🤓🤓"],
+            eng: ["The most famous drink store in Triam Udom Suksa School, also is one of the most important shops in Dom Thong.", "A shop where everyone can have unlimited 'เกี๊ยว' for free. Very Sud because everyone is Sud Lhor.", "One of the most affordable rice and curry store, she also sells grilled pork!", "A specialty of a salad shop is that they have glass noodles. You can order in advance.", "A famous fried food shop in Dom Thong, selling everything from French fries to cheese chicken.", "This store lets you serve your own soup and cucumbers, which is quite unusual among other Dom Thong shops.", "At the corber od Dom Thong, a popular place for students during breaks.", "A famous made-to-order store at Triam Udom Suksa School, open even during school breaks for active students to stop by and eat. Can order via Line.", "A branch of Sud Lhor with NamTok noodles", "A store where the she can mix any kind of smoothies for a fixed price of 15 baht.", "A crispy pork store that also sells omelets in the evening. There are a lots of ingredients.", "Very famous store selling Instant noodle, Cabonara, and spaghetti", "Selling fruit and fried food", "She sells fruit smoothies 🤓🤓​"],
+        }
+        
+        /*phone number shown on connection*/
+        const connectionText = ["", "📞 0947691459", "📞 0642372765", "", "", "📞 0846378226", "", "📞 0832993094", "📞 0929799652", "", "📞 0650952397", "", "📞 0969594867", ""]
+        
+        /*Line shown on connection*/
+        const connection2Text = ["", "", "", "💬 Zeed", "", "", "", "", "", "", "💬 ชูแก้ว", "", "", ""]
+        
+        /*link to the store seller, 2 links call and line*/
+        const connectionLink = ["", "", "tel:0947691459", "", "tel:0642372765", "", "", "https://line.me/ti/p/fi8-RMBRNu", "", "", "tel:0846378226", "", "", "", "tel:0832993094", "https://line.me/ti/p/%40Tak2497", "tel:0929799652", "", "", "", "tel:0650952397", "https://line.me/ti/p/mWqKpEw2oK", "", "", "tel:0969594967", "", "", ""]
+        
+        /*must change to using API ASAP*/
+        /*recieve data from google sheet
+            let recieveData = googlesheet(storeRating);
+            let sendData = googlesheet(avg,;currentNum);
+            
+        /*
+        
+        let realStoreRating = "";
+        
+        const storeRating = {
+            1: [0, 1, 0, 0, 0],
+            2: [0, 0, 1, 0, 0],
+            3: [0, 1, 0, 0, 0],
+            4: [1, 0, 0, 0, 0],
+            5: [1, 0, 0, 0, 0],
+            6: [0, 1, 0, 0, 0],
+            7: [0, 1, 0, 0, 0],
+            8: [0, 0, 1, 0, 0],
+            9: [0, 1, 0, 0, 0],
+            10: [0, 1, 0, 0, 0],
+            11: [0, 0, 1, 0, 0],
+            12: [1, 0, 0, 0, 0],
+            13: [0, 1, 0, 0, 0],
+            14: [0, 1, 0, 0, 0],
+        }
+        */
+        
+        function hidePopup() {
+            document.getElementById("popup").style.display = "none";
+            document.getElementById("overlay").style.display = "none";          
+            document.getElementById("33").style.display = "none";
+            document.getElementById("popup-comment").style.display = "none";
+            document.getElementById("ratee1").textContent = '☆';
+            document.getElementById("ratee2").textContent = '☆';
+            document.getElementById("ratee3").textContent = '☆';
+            document.getElementById("ratee4").textContent = '☆';
+            document.getElementById("ratee5").textContent = '☆';
+        }
+        
+        function hidePopComment() {
+            document.getElementById("popup-comment").style.display = "none";
+        }
+        
+        function showPopComment() {
+            document.getElementById("popup-comment").style.display = "block";
+        }
+
+        function showSort() {
+            if (document.getElementById("Sorto").style.display == "block") {
+                document.getElementById("Sorto").style.display = "none";  
+            } else {
+                document.getElementById("Sorto").style.display = "block";
+            }
+        }
+        
+        function rater(num) {
+            document.getElementById("33").style.display = "block";
+            let rate1 = document.getElementById("ratee1")
+            let rate2 = document.getElementById("ratee2")
+            let rate3 = document.getElementById("ratee3")
+            let rate4 = document.getElementById("ratee4")
+            let rate5 = document.getElementById("ratee5")
+            rate5.textContent = '⭐';
+            rate4.textContent = '⭐';
+            rate3.textContent = '⭐';
+            rate2.textContent = '⭐';
+            rate1.textContent = '⭐';
+            if (num < 5) {
+                rate5.textContent = '☆';
+            }
+            if (num < 4) {
+                rate4.textContent = '☆';
+            }
+            if (num < 3) {
+                rate3.textContent = '☆';
+            }
+            if (num < 2) {
+                rate2.textContent = '☆';
+            }
+            ratingRN = num;
+
+        }
+
+        function showPopup(num) {
+            ratingRN = 0;
+            currentNum = num;
+            let popupTitle = document.getElementById("popup-title");
+            let popupDesc  = document.getElementById("popup-desc");
+            let avgRating = document.getElementById("avgRating");
+            let allRating1 = document.getElementById("allRating1");
+            let allRating2 = document.getElementById("allRating2");
+            let allRating3 = document.getElementById("allRating3");
+            let allRating4 = document.getElementById("allRating4");
+            let allRating5 = document.getElementById("allRating5");
+            let popupConnect = document.getElementById("popup-price");
+            let popupConnect2 = document.getElementById("popup-price2"); /*translate if*/
+            let tranCheck = document.getElementById("1");
+            if (tranCheck.textContent == "ร้านน้ำป้าขาว") {
+                popupTitle.textContent = boxText.th[(num*2)-2];
+                popupDesc.textContent = detailedText.th[num-1];
+            } else {
+                popupTitle.textContent = boxText.eng[(num*2)-2];
+                popupDesc.textContent = detailedText.eng[num-1];
+            }
+            /*Connection*/
+            popupConnect.textContent = connectionText[num-1];
+            popupConnect2.textContent = connection2Text[num-1];
+            popupConnect.href = connectionLink[(num*2)-2];
+            popupConnect2.href = connectionLink[(num*2)-1];
+
+            /*will use this later when sending rating is ok*/
+            let checky2 = "dataStorage" + num;
+            realStoreRating = document.getElementById(checky2);
+            
+            /*rating*/
+            let average = 0;
+            let divider = 0;
+            for (let i = 1; i < 6; i++) {
+                average = average + ((6-i)*realStoreRating.textContent[(i*2)-1]);
+                divider = divider + Number(realStoreRating.textContent[(i*2)-1]);
+            }
+            let checky3 = (average/divider).toFixed(1);
+            avgRating.textContent = checky3;
+            /*change to API soon*/
+            avgRating.textContent += '⭐';
+            
+            allRating1.textContent = '';
+            allRating2.textContent = '';
+            allRating3.textContent = '';
+            allRating4.textContent = '';
+            allRating5.textContent = '';            
+            allRating5.textContent = realStoreRating.textContent[1] + ' ⭐⭐⭐⭐⭐' 
+            allRating4.textContent += realStoreRating.textContent[3] + ' ⭐⭐⭐⭐'
+            allRating3.textContent += realStoreRating.textContent[5] + ' ⭐⭐⭐'
+            allRating2.textContent += realStoreRating.textContent[7] + ' ⭐⭐'
+            allRating1.textContent += realStoreRating.textContent[9] + ' ⭐';
+            popupTitle.innerHTML += ' ';
+            for(let i = 1; i <= Math.round(checky3); i++) {
+                popupTitle.innerHTML += '⭐';
+            }
+            document.getElementById("popup").style.display = "block";
+            document.getElementById("overlay").style.display = "block";
+        }
+
+        function changeLanguage(language) {
+            for(let i = 0; i <= 32; i++) {
+                document.getElementById(i+1).textContent = boxText[language][i];
+            }
+            if (language == 'th') {
+                document.getElementById("engButton").style.backgroundColor = "rgb(255, 165, 0, 0)";
+                document.getElementById("thButton").style.backgroundColor = "rgb(194, 100, 0, 0.8)";
+            } else {
+                document.getElementById("thButton").style.backgroundColor = "rgb(255, 165, 0, 0)";
+                document.getElementById("engButton").style.backgroundColor = "rgb(194, 100, 0, 0.8)";
+            }
+        }
+
+        let selectedTags = new Set();
+
+        function sortCheck(tag) {
+            if (selectedTags.has(tag)) {
+                selectedTags.delete(tag);
+            } else {
+                selectedTags.add(tag);
+            }
+            filterStores(); // Call filterStores immediately after updating selectedTags
+            if (tag == "55") {
+                if (document.getElementById("tag55").style.backgroundColor == "greenyellow") {
+                    document.getElementById("tag55").style.backgroundColor = "gray";
+                } else {
+                    document.getElementById("tag55").style.backgroundColor = "greenyellow";
+                }
+            } else if (tag == "50") {
+                if (document.getElementById("tag50").style.backgroundColor == "greenyellow") {
+                    document.getElementById("tag50").style.backgroundColor = "gray";
+                } else {
+                    document.getElementById("tag50").style.backgroundColor = "greenyellow";
+                }
+            } else if (tag == "foods") {
+                if (document.getElementById("tag-food").style.backgroundColor == "greenyellow") {
+                    document.getElementById("tag-food").style.backgroundColor = "rgb(255, 72, 102)";
+                } else {
+                    document.getElementById("tag-food").style.backgroundColor = "greenyellow";
+                }
+            } else if (tag == "drinks") {
+                if (document.getElementById("tag-drink").style.backgroundColor == "greenyellow") {
+                    document.getElementById("tag-drink").style.backgroundColor = "rgb(55, 150, 194)";
+                } else {
+                    document.getElementById("tag-drink").style.backgroundColor = "greenyellow";
+                }
+            } else if (tag == "snacks") {
+                if (document.getElementById("tag-snacks").style.backgroundColor == "greenyellow") {
+                    document.getElementById("tag-snacks").style.backgroundColor = "rgb(211, 179, 141)";
+                } else {
+                    document.getElementById("tag-snacks").style.backgroundColor = "greenyellow";
+                }
+            } else if (tag == "fruits") {
+                if (document.getElementById("tag-fruits").style.backgroundColor == "greenyellow") {
+                    document.getElementById("tag-fruits").style.backgroundColor = "rgb(245, 255, 103)";
+                } else {
+                    document.getElementById("tag-fruits").style.backgroundColor = "greenyellow";
+                }
+            } else if (tag == "icecream") {
+                if (document.getElementById("tag-icecream").style.backgroundColor == "greenyellow") {
+                    document.getElementById("tag-icecream").style.backgroundColor = "rgb(254, 255, 245)";
+                } else {
+                    document.getElementById("tag-icecream").style.backgroundColor = "greenyellow";
+                }
+            }
+        }
+
+        function filterStores() {
+            const stores = document.querySelectorAll('.classroom-card');
+            stores.forEach(store => {
+                const storeTags = store.getAttribute('data-tags').split(' ');
+                if ([...selectedTags].every(tag => storeTags.includes(tag))) {
+                    store.style.display = 'flex';
+                } else {
+                    store.style.display = 'none';
+                }
+            });
+        }
+
+        function reloade() {
+            location.reload();
+        }
+        
+        function submit() {
+            let preStargate = [, , , , ];
+            let ready1 = realStoreRating.textContent[1];
+            let ready2 = realStoreRating.textContent[3];
+            let ready3 = realStoreRating.textContent[5];
+            let ready4 = realStoreRating.textContent[7];
+            let ready5 = realStoreRating.textContent[9];
+            preStargate[0] = Number(ready1);
+            preStargate[1] = Number(ready2);
+            preStargate[2] = Number(ready3);
+            preStargate[3] = Number(ready4);
+            preStargate[4] = Number(ready5);
+            preStargate[Math.abs(ratingRN-5)] += 1;
+            let Stargate = preStargate;
+ fetch('https://script.google.com/macros/s/AKfycby3Y2pyBtXrXeibqmoCyQOUBSEoxKQjD29QU82NOJzHTmT33D1GE_5e4sqmLearE_xl/exec', {mode: "no-cors"}, {
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    row: currentNum,
+                    rating: Stargate
+                }) // Replace with actual data
+            })
+            .then(response => response.text())
+            .then(data => console.log(data)) // Should log "Success"
+            .catch(error => console.error(error));
+        }
+        /*Recieve data from Google Sheet*/
+
+        function collectData(data) {
+            let googleSheetData = data
+            document.getElementById("dataStorage1").textContent = '[' + data[0] + ']'
+            document.getElementById("dataStorage2").textContent = '[' + data[1] + ']'
+            document.getElementById("dataStorage3").textContent = '[' + data[2] + ']'
+            document.getElementById("dataStorage4").textContent = '[' + data[3] + ']'
+            document.getElementById("dataStorage5").textContent = '[' + data[4] + ']'
+            document.getElementById("dataStorage6").textContent = '[' + data[5] + ']'
+            document.getElementById("dataStorage7").textContent = '[' + data[6] + ']'
+            document.getElementById("dataStorage8").textContent = '[' + data[7] + ']'
+            document.getElementById("dataStorage9").textContent = '[' + data[8] + ']'
+            document.getElementById("dataStorage10").textContent = '[' + data[9] + ']'
+            document.getElementById("dataStorage11").textContent = '[' + data[10] + ']'
+            document.getElementById("dataStorage12").textContent = '[' + data[11] + ']'
+            document.getElementById("dataStorage13").textContent = '[' + data[12] + ']'
+            document.getElementById("dataStorage14").textContent = '[' + data[13] + ']'
+            console.log("script ready!");
+        }
+
+        fetch('https://script.google.com/macros/s/AKfycbwIR_pDKz1XO_zXT1uxzk8wDvTF7J8FL2oil4b6yfbXOxVSZSA-Wf1wvxPYPQT3sp4Q/exec')
+            .then(response => response.json())
+            .then(data => {
+                collectData(data);
+            })
+        .catch(error => console.error("Fetch error:", error));
+        changeLanguage('th')
+    </script>
+</body>
+</html>
