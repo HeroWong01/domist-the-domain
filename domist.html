@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, Vertical">
     <title>Domist the store</title>
     <style>
         /*ATTENTION CODERS: THIS CODE ISN'T OPTIMIZED WHICH MEANS THAT IT MIGHT HURT YOUR EYES, YOU HAVE BEEN WARNED :D */
@@ -462,7 +461,34 @@
             top: 190px;
             left: 85px;
         }
+
+        .waiting-content1 {
+            z-index: 20;
+
+            position: absolute;
+            right: 0px;
+            border-radius: 20px;
+            min-width: 90px;
+            min-height: 40px;
+            background-color: rgb(143, 143, 143);
+            color: white;
+            border-style: none;
+            display: none;
+            align-content: center;   
+            text-align: center;
+        }
         
+        .rater-preAll {
+            z-index: 10;
+
+            font-size: 10px;
+            position: absolute;
+            color: rgb(169, 169, 169);
+            margin-left: 5%;
+            margin-bottom: 50px;
+            bottom: 0px;
+        }
+
         .rater-all {
             z-index: 10;
             
@@ -617,6 +643,7 @@
             <div id="allRating1" class="comment-content3 comment-pad4">
                 0 ⭐ <br>
             </div>
+            <div id="34" class="rater-preAll">Rating Based on cleans, taste, and opening routine.</div>
             <div class="rater-all">
                 <div id="ratee1" class="rater-content2" onclick="rater(1)"> ☆
                 </div>
@@ -629,6 +656,7 @@
                 <div id="ratee5" class="rater-content2 rate-pad4 clickable" onclick="rater(5)"> ☆
                 </div>
                 <div id="33" class="rater-content1 clickable" onclick="submit()">Submit</div>
+                <div id="35" class="waiting-content1">Wait...</div>
             </div>
             <button onclick="hidePopComment()" class="popup-close-button2">X</button>
         </div>
@@ -812,9 +840,15 @@
             "ร้านข้าวมันไก่", "ขายข้าวมันไก่ต้มและทอด ราคาประมาณ 35฿-40฿", "ร้านน้ำหนุงหนิง", "ขายน้ำเปล่า และน้ำปั่น ราคา 20฿-40฿", "ร้านป้าน้อง", "ร้านอาหารตามสั่ง ทำได้เกือบหมด ราคาตั้งแต่ 35฿-80฿", 
             "ร้านสุดหล่อ2", "ขายก๋วยเตี๋ยว เส้นเล็ก หมี่เหลือง เส้นแบนและกลม ราคา 35฿-40฿","ร้านน้ำป้าตาล", "ขายน้ำแก้วละ 15฿ เพิ่มเยลลี่เม็ดละ 1฿", "ร้านหมูกรอบกับข้าวแกง", "ขายข้าวราดแกงและหมูกรอบราคา 30-40฿", "ร้านปลื้มราดหน้าหมูหมัก", 
             "ขายราดหน้า สปาเก็ตตีคาโบนารา ซุบ ผัดมักกะโรนี ราคา 35-40฿", "P'Pop, Son ผลไม้ ของทอด", "ขายผลไม้สด และของทอด ราคา 20฿ ขึ้นไป", 
-            "ผลไม้ปั่นร้านป้าติ๋ม", "เมนูเย็น 20-25฿ เมนูปั่น 25-30฿ เพิ่มท็อปปิ้ง อย่างละ 5฿", "ไม่พบร้านที่ต้องการหา 😔", "เลือกประเภทอาหารที่อยากทานได้เลย! 😋", "คะแนน⭐", "คะแนน", "ส่ง"],
-            eng: ["Pa Kaow's drink", "Smoothies and sodas avaliable for 20฿-40฿", "Sud Lhor Noodle", "Offering every type of noodle with delicious tastes 35฿+", "Curry store", "Selling curry with 1 kind for 30฿ or 2 kinds for 35฿", "Zeed spicy salad", "Spicy and delicious, comes with glass noodle and many more", "Appetizer of Dome Thong", "Every snacks and appetizer you coukd find is here! 20฿-40฿", "Number2 munkai", "Rice with chicken and fried chicken both for 35฿", "Nung Ning Drink", "smoothies avaliable for 20฿-40฿", "Pa Nong 👑", "'Made to order' store and special curry 35฿-80฿", "Sud Lhor the second", "Just like the first store with more range of noodle taste 35฿-40฿", "Pa Tarn Drink",
-             "colored water and jellies 1฿ each", "Curry + Crispy pork", "Pork and more avaliable from 30฿-40฿, yes with curry also", "Pleum's marinated pork noodles.", "Selling Instant noodle, spaghetti, and Cabonara for 35฿-45฿", "P'pop P'son snacks and fruits", "Another snack store that also sell fruits", "Tim's smoothies'", "Cold and Smoothies drinks from 20฿-30฿, with topping +5฿", "No Stores found 😔", "Choose what to eat! 😋", "Rating⭐", "Rating", "Submit"],
+            "ผลไม้ปั่นร้านป้าติ๋ม", "เมนูเย็น 20-25฿ เมนูปั่น 25-30฿ เพิ่มท็อปปิ้ง อย่างละ 5฿", "ไม่พบร้านที่ต้องการหา 😔", "เลือกประเภทอาหารที่อยากทานได้เลย! 😋", "คะแนน⭐", "คะแนน", "ส่ง", "ประเมินตามความสะอาด รสชาติ ผู้ขายและอีกหลายปัจจัย"],
+            eng: ["Pa Kaow's drink", "Smoothies and sodas avaliable for 20฿-40฿", "Sud Lhor Noodle", "Offering every type of noodle with delicious tastes 35฿+", "Curry store",
+             "Selling curry with 1 kind for 30฿ or 2 kinds for 35฿", "Zeed spicy salad", "Spicy and delicious, comes with glass noodle and many more", "Appetizer of Dome Thong",
+             "Every snacks and appetizer you coukd find is here! 20฿-40฿", "Number2 munkai", "Rice with chicken and fried chicken both for 35฿", "Nung Ning Drink",
+             "smoothies avaliable for 20฿-40฿", "Pa Nong 👑", "'Made to order' store and special curry 35฿-80฿", "Sud Lhor the second", "Just like the first store with more range of noodle taste 35฿-40฿",
+             "Pa Tarn Drink", "colored water and jellies 1฿ each", "Curry + Crispy pork", "Pork and more avaliable from 30฿-40฿, yes with curry also", "Pleum's marinated pork noodles.", 
+             "Selling Instant noodle, spaghetti, and Cabonara for 35฿-45฿", "P'pop P'son snacks and fruits", "Another snack store that also sell fruits", "Tim's smoothies", 
+             "Cold and Smoothies drinks from 20฿-30฿, with topping +5฿", "No Stores found 😔", "Choose what to eat! 😋", "Rating⭐", "Rating", "Submit", 
+             "Rating Based on cleans, taste, seller, and many more."],
         }
 
         const detailedText = {
@@ -833,33 +867,6 @@
         
         /*link to the store seller, 2 links call and line*/
         const connectionLink = ["", "", "tel:0947691459", "", "tel:0642372765", "", "", "https://line.me/ti/p/fi8-RMBRNu", "", "", "tel:0846378226", "", "", "", "tel:0832993094", "https://line.me/ti/p/%40Tak2497", "tel:0929799652", "", "", "", "tel:0650952397", "https://line.me/ti/p/mWqKpEw2oK", "", "", "tel:0969594967", "", "", ""]
-        
-        /*must change to using API ASAP*/
-        /*recieve data from google sheet
-            let recieveData = googlesheet(storeRating);
-            let sendData = googlesheet(avg,;currentNum);
-            
-        /*
-        
-        let realStoreRating = "";
-        
-        const storeRating = {
-            1: [0, 1, 0, 0, 0],
-            2: [0, 0, 1, 0, 0],
-            3: [0, 1, 0, 0, 0],
-            4: [1, 0, 0, 0, 0],
-            5: [1, 0, 0, 0, 0],
-            6: [0, 1, 0, 0, 0],
-            7: [0, 1, 0, 0, 0],
-            8: [0, 0, 1, 0, 0],
-            9: [0, 1, 0, 0, 0],
-            10: [0, 1, 0, 0, 0],
-            11: [0, 0, 1, 0, 0],
-            12: [1, 0, 0, 0, 0],
-            13: [0, 1, 0, 0, 0],
-            14: [0, 1, 0, 0, 0],
-        }
-        */
         
         function hidePopup() {
             document.getElementById("popup").style.display = "none";
@@ -979,7 +986,7 @@
         }
 
         function changeLanguage(language) {
-            for(let i = 0; i <= 32; i++) {
+            for(let i = 0; i <= 33; i++) {
                 document.getElementById(i+1).textContent = boxText[language][i];
             }
             if (language == 'th') {
@@ -1062,6 +1069,7 @@
         }
         
         function submit() {
+            document.getElementById("35").style.display = 'block';
             let preStargate = [, , , , ];
             let ready1 = realStoreRating.textContent[1];
             let ready2 = realStoreRating.textContent[3];
@@ -1075,17 +1083,19 @@
             preStargate[4] = Number(ready5);
             preStargate[Math.abs(ratingRN-5)] += 1;
             let Stargate = preStargate;
- fetch('https://script.google.com/macros/s/AKfycby3Y2pyBtXrXeibqmoCyQOUBSEoxKQjD29QU82NOJzHTmT33D1GE_5e4sqmLearE_xl/exec', {mode: "no-cors"}, {
+            console.log("Your submit have reached Stargate, await sending...");
+            fetch('https://script.google.com/macros/s/AKfycbzQdg5UsfNH_QfoM5f72bHLj6jF7YQKm99Iga915zEafuEMzry9hqkigtkuPRKGFILuig/exec', {
                 method: 'POST',
+                mode: 'no-cors', // No response can be read
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     row: currentNum,
                     rating: Stargate
-                }) // Replace with actual data
+                })
             })
-            .then(response => response.text())
-            .then(data => console.log(data)) // Should log "Success"
-            .catch(error => console.error(error));
+            .then(() => document.getElementById("35").textContent = "Success!") // No response processing
+            .catch(error => console.error("Fetch error:", error));
+            recieveData();
         }
         /*Recieve data from Google Sheet*/
 
@@ -1105,16 +1115,21 @@
             document.getElementById("dataStorage12").textContent = '[' + data[11] + ']'
             document.getElementById("dataStorage13").textContent = '[' + data[12] + ']'
             document.getElementById("dataStorage14").textContent = '[' + data[13] + ']'
-            console.log("script ready!");
+            console.log("script is ready!");
+            document.getElementById("35").style.display = 'none';
+            document.getElementById("35").textContent = "Wait...";
         }
 
-        fetch('https://script.google.com/macros/s/AKfycbwIR_pDKz1XO_zXT1uxzk8wDvTF7J8FL2oil4b6yfbXOxVSZSA-Wf1wvxPYPQT3sp4Q/exec')
+        function recieveData() {
+            fetch('https://script.google.com/macros/s/AKfycbwIR_pDKz1XO_zXT1uxzk8wDvTF7J8FL2oil4b6yfbXOxVSZSA-Wf1wvxPYPQT3sp4Q/exec')
             .then(response => response.json())
             .then(data => {
                 collectData(data);
             })
-        .catch(error => console.error("Fetch error:", error));
-        changeLanguage('th')
+            .catch(error => console.error("Fetch error:", error));
+        }
+        recieveData();
+        changeLanguage('th');
     </script>
 </body>
 </html>
