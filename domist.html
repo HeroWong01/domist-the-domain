@@ -603,20 +603,6 @@
 </head>
 <body>
     <div id="overlay" onclick="hidePopup()"></div> <!-- Overlay to dim background -->
-    <div id="dataStorage1" class="emergency-storage"></div>
-    <div id="dataStorage2" class="emergency-storage"></div>
-    <div id="dataStorage3" class="emergency-storage"></div>
-    <div id="dataStorage4" class="emergency-storage"></div>
-    <div id="dataStorage5" class="emergency-storage"></div>
-    <div id="dataStorage6" class="emergency-storage"></div>
-    <div id="dataStorage7" class="emergency-storage"></div>
-    <div id="dataStorage8" class="emergency-storage"></div>
-    <div id="dataStorage9" class="emergency-storage"></div>
-    <div id="dataStorage10" class="emergency-storage"></div>
-    <div id="dataStorage11" class="emergency-storage"></div>
-    <div id="dataStorage12" class="emergency-storage"></div>
-    <div id="dataStorage13" class="emergency-storage"></div>
-    <div id="dataStorage14" class="emergency-storage"></div>
     <div id="popup">
         <img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/sudlor.jpg?raw=true">
         <div class="darkener2"></div>
@@ -950,17 +936,13 @@
             popupConnect2.textContent = connection2Text[num-1];
             popupConnect.href = connectionLink[(num*2)-2];
             popupConnect2.href = connectionLink[(num*2)-1];
-
-            /*will use this later when sending rating is ok*/
-            let checky2 = "dataStorage" + num;
-            realStoreRating = document.getElementById(checky2);
             
             /*rating*/
             let average = 0;
             let divider = 0;
-            for (let i = 1; i < 6; i++) {
-                average = average + ((6-i)*realStoreRating.textContent[(i*2)-1]);
-                divider = divider + Number(realStoreRating.textContent[(i*2)-1]);
+            for (let i = 0; i < 5; i++) {
+                average = average + ((5-i)*sheetData[num-1][i]);
+                divider = divider + sheetData[num-1][i];
             }
             let checky3 = (average/divider).toFixed(1);
             avgRating.textContent = checky3;
@@ -971,12 +953,12 @@
             allRating2.textContent = '';
             allRating3.textContent = '';
             allRating4.textContent = '';
-            allRating5.textContent = '';            
-            allRating5.textContent = realStoreRating.textContent[1] + ' ⭐⭐⭐⭐⭐' 
-            allRating4.textContent += realStoreRating.textContent[3] + ' ⭐⭐⭐⭐'
-            allRating3.textContent += realStoreRating.textContent[5] + ' ⭐⭐⭐'
-            allRating2.textContent += realStoreRating.textContent[7] + ' ⭐⭐'
-            allRating1.textContent += realStoreRating.textContent[9] + ' ⭐';
+            allRating5.textContent = '';
+            allRating5.textContent = sheetData[num-1][0] + ' ⭐⭐⭐⭐⭐' 
+            allRating4.textContent = sheetData[num-1][1] + ' ⭐⭐⭐⭐'
+            allRating3.textContent = sheetData[num-1][2] + ' ⭐⭐⭐'
+            allRating2.textContent = sheetData[num-1][3] + ' ⭐⭐'
+            allRating1.textContent = sheetData[num-1][4] + ' ⭐';
             popupTitle.innerHTML += ' ';
             for(let i = 1; i <= Math.round(checky3); i++) {
                 popupTitle.innerHTML += '⭐';
@@ -1070,19 +1052,8 @@
         
         function submit() {
             document.getElementById("35").style.display = 'block';
-            let preStargate = [, , , , ];
-            let ready1 = realStoreRating.textContent[1];
-            let ready2 = realStoreRating.textContent[3];
-            let ready3 = realStoreRating.textContent[5];
-            let ready4 = realStoreRating.textContent[7];
-            let ready5 = realStoreRating.textContent[9];
-            preStargate[0] = Number(ready1);
-            preStargate[1] = Number(ready2);
-            preStargate[2] = Number(ready3);
-            preStargate[3] = Number(ready4);
-            preStargate[4] = Number(ready5);
-            preStargate[Math.abs(ratingRN-5)] += 1;
-            let Stargate = preStargate;
+            let Stargate = sheetData[currentNum-1];
+            Stargate[Math.abs(ratingRN-5)] += 1;
             console.log("Your submit have reached Stargate, await sending...");
             fetch('https://script.google.com/macros/s/AKfycbzQdg5UsfNH_QfoM5f72bHLj6jF7YQKm99Iga915zEafuEMzry9hqkigtkuPRKGFILuig/exec', {
                 method: 'POST',
@@ -1097,33 +1068,19 @@
             .catch(error => console.error("Fetch error:", error));
             recieveData();
         }
-        /*Recieve data from Google Sheet*/
 
         function collectData(data) {
-            let googleSheetData = data
-            document.getElementById("dataStorage1").textContent = '[' + data[0] + ']'
-            document.getElementById("dataStorage2").textContent = '[' + data[1] + ']'
-            document.getElementById("dataStorage3").textContent = '[' + data[2] + ']'
-            document.getElementById("dataStorage4").textContent = '[' + data[3] + ']'
-            document.getElementById("dataStorage5").textContent = '[' + data[4] + ']'
-            document.getElementById("dataStorage6").textContent = '[' + data[5] + ']'
-            document.getElementById("dataStorage7").textContent = '[' + data[6] + ']'
-            document.getElementById("dataStorage8").textContent = '[' + data[7] + ']'
-            document.getElementById("dataStorage9").textContent = '[' + data[8] + ']'
-            document.getElementById("dataStorage10").textContent = '[' + data[9] + ']'
-            document.getElementById("dataStorage11").textContent = '[' + data[10] + ']'
-            document.getElementById("dataStorage12").textContent = '[' + data[11] + ']'
-            document.getElementById("dataStorage13").textContent = '[' + data[12] + ']'
-            document.getElementById("dataStorage14").textContent = '[' + data[13] + ']'
-            console.log("script is ready!");
+            console.log("Script is ready!");
             document.getElementById("35").style.display = 'none';
             document.getElementById("35").textContent = "Wait...";
         }
 
+        var sheetData;
         function recieveData() {
             fetch('https://script.google.com/macros/s/AKfycbwIR_pDKz1XO_zXT1uxzk8wDvTF7J8FL2oil4b6yfbXOxVSZSA-Wf1wvxPYPQT3sp4Q/exec')
             .then(response => response.json())
             .then(data => {
+                sheetData = data;
                 collectData(data);
             })
             .catch(error => console.error("Fetch error:", error));
