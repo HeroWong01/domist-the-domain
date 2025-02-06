@@ -8,7 +8,7 @@
         /*ATTENTION CODERS: THIS CODE ISN'T OPTIMIZED WHICH MEANS THAT IT MIGHT HURT YOUR EYES, YOU HAVE BEEN WARNED :D */
         body {
             font-family: Arial, sans-serif;
-            margin: 0px;    
+            margin: 0px;
             padding: 0px;
             background-color: #ffd8d8;
             display: flex;
@@ -562,6 +562,12 @@
             display: none;
         }        
 
+        .special {
+            width: 100%;
+            height: 150px;
+            font-weight: 100;
+        }
+
         #popup {
             z-index: 4;
 
@@ -611,9 +617,9 @@
         <a id="popup-price" class="popup-price" href="tel:0650750773">Connection</a>
         <a id="popup-price2" class="popup-price2" href="tel:0650750773">Connection2</a>
         <div id="popup-desc" class="popup-desc">Desc</div>
-        <div id="31" class="popup-preComment" onclick="showPopComment()">Ratings</div>
+        <div id="39" class="popup-preComment" onclick="showPopComment()">Ratings</div>
         <div id="popup-comment" class="popup-comment">
-            <div id="32" class="comment-content1">Ratings</div>
+            <div id="40" class="comment-content1">Ratings</div>
             <div id="avgRating" class="comment-content2">5.0 ⭐</div>
             <div id="allRating5" class="comment-content3">
                 0 ⭐⭐⭐⭐⭐ <br>
@@ -630,7 +636,7 @@
             <div id="allRating1" class="comment-content3 comment-pad4">
                 0 ⭐ <br>
             </div>
-            <div id="34" class="rater-preAll">Rating Based on cleans, taste, and opening routine.</div>
+            <div id="42" class="rater-preAll">Rating Based on cleans, taste, and opening routine.</div>
             <div class="rater-all">
                 <div id="ratee1" class="rater-content2" onclick="rater(1)"> ☆
                 </div>
@@ -642,8 +648,8 @@
                 </div>
                 <div id="ratee5" class="rater-content2 rate-pad4 clickable" onclick="rater(5)"> ☆
                 </div>
-                <div id="33" class="rater-content1 clickable" onclick="submit()">Submit</div>
-                <div id="35" class="waiting-content1">Wait...</div>
+                <div id="41" class="rater-content1 clickable" onclick="submit()">Submit</div>
+                <div id="43" class="waiting-content1">Wait...</div>
             </div>
             <button onclick="hidePopComment()" class="popup-close-button2">X</button>
         </div>
@@ -663,7 +669,7 @@
             <div id="tag-snacks" onclick="sortCheck('snacks')" class="clickable sort-tags snacks">🍟</div>
             <div id="tag-fruits" onclick="sortCheck('fruits')" class="clickable sort-tags fruits">🍎</div>
         </div>
-        <p id="30" class="sort-content1">Click on what you wanted to eat!</p>
+        <p id="38" class="sort-content1">Click on what you wanted to eat!</p>
     </div>
     <div Class="heading">
         <a class="heading-content1" onclick="reloade()"><img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/339690.jpg?raw=true" class="heading-content4"></a>
@@ -674,7 +680,7 @@
         <button id="sortButton" class="heading-content3 clickable" onclick="showSort()">Sort</button>
     </div>
     <div class="checky01">
-        <p id="29">No Stores found 😔</p>
+        <p id="37">No Stores found 😔</p>
     </div>
     <div id="Class1" class="classroom-card" onclick="showPopup(1)" data-tags="55 drinks icecream">
         <img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/white.jpg?raw=true">
@@ -819,6 +825,43 @@
             <div class="tags drinks">💧</div>
         </div>
     </div>
+    <div id="Class15" class="classroom-card" onclick="showPopup(15)" data-tags="50 drinks icecream">
+        <img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/white.jpg?raw=true" class="picture-card1">
+        <div class="darkener"></div>
+        <div class="card-title" id="29">ผลไม้ปั่นร้านป้าติ๋ม</div>
+        <div class="card-description" id="30">เมนูเย็น 20-25฿ เมนูปั่น 25-30฿ เพิ่มท็อปปิ้ง อย่างละ 5฿</div>
+        <div class="tags-boxes">
+            <div class="tags building">🏬50ปี</div>
+            <div class="tags icecream">🍦</div>
+            <div class="tags drinks">💧</div>
+        </div>
+    </div>
+    <div id="Class16" class="classroom-card" onclick="showPopup(16)" data-tags="50 foods">
+        <img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/1736182083973.jpg?raw=true" class="picture-card1">
+        <div class="darkener"></div>
+        <div class="card-title" id="31">ผลไม้ปั่นร้านป้าติ๋ม</div>
+        <div class="card-description" id="32">เมนูเย็น 20-25฿ เมนูปั่น 25-30฿ เพิ่มท็อปปิ้ง อย่างละ 5฿</div>
+        <div class="tags-boxes">
+            <div class="tags building">🏬50ปี</div>
+            <div class="tags foods">🍲</div>
+        </div>
+    </div>
+    <div id="Class17" class="classroom-card" onclick="showPopup(17)" data-tags="50 foods">
+        <img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/339702_0.jpg?raw=true" class="picture-card1">
+        <div class="darkener"></div>
+        <div class="card-title" id="33">ผลไม้ปั่นร้านป้าติ๋ม</div>
+        <div class="card-description" id="34">เมนูเย็น 20-25฿ เมนูปั่น 25-30฿ เพิ่มท็อปปิ้ง อย่างละ 5฿</div>
+        <div class="tags-boxes">
+            <div class="tags building">🏬50ปี</div>
+            <div class="tags foods">🍲</div>
+        </div>
+    </div>
+    <div id="Class18" class="classroom-card special" onclick="showPopup(18)" data-tags="">
+        <img src="https://github.com/HeroWong01/domist-the-domain/blob/main/Picture/krukorn.png?raw=true" class="picture-card1">
+        <div class="darkener"></div>
+        <div class="card-title" id="35">กิตติกรรมประกาศ</div>
+        <div class="card-description" id="36">กิตติกรรมประกาศ2</div>
+    </div>
 
     <script>
         const boxText = { /*even is store's name, odd is store's description*/
@@ -827,38 +870,47 @@
             "ร้านข้าวมันไก่", "ขายข้าวมันไก่ต้มและทอด ราคาประมาณ 35฿-40฿", "ร้านน้ำหนุงหนิง", "ขายน้ำเปล่า และน้ำปั่น ราคา 20฿-40฿", "ร้านป้าน้อง", "ร้านอาหารตามสั่ง ทำได้เกือบหมด ราคาตั้งแต่ 35฿-80฿", 
             "ร้านสุดหล่อ2", "ขายก๋วยเตี๋ยว เส้นเล็ก หมี่เหลือง เส้นแบนและกลม ราคา 35฿-40฿","ร้านน้ำป้าตาล", "ขายน้ำแก้วละ 15฿ เพิ่มเยลลี่เม็ดละ 1฿", "ร้านหมูกรอบกับข้าวแกง", "ขายข้าวราดแกงและหมูกรอบราคา 30-40฿", "ร้านปลื้มราดหน้าหมูหมัก", 
             "ขายราดหน้า สปาเก็ตตีคาโบนารา ซุบ ผัดมักกะโรนี ราคา 35-40฿", "P'Pop, Son ผลไม้ ของทอด", "ขายผลไม้สด และของทอด ราคา 20฿ ขึ้นไป", 
-            "ผลไม้ปั่นร้านป้าติ๋ม", "เมนูเย็น 20-25฿ เมนูปั่น 25-30฿ เพิ่มท็อปปิ้ง อย่างละ 5฿", "ไม่พบร้านที่ต้องการหา 😔", "เลือกประเภทอาหารที่อยากทานได้เลย! 😋", "คะแนน⭐", "คะแนน", "ส่ง", "ประเมินตามความสะอาด รสชาติ ผู้ขายและอีกหลายปัจจัย"],
+            "ผลไม้ปั่นร้านป้าติ๋ม", "เมนูเย็น 20-25฿ เมนูปั่น 25-30฿ เพิ่มท็อปปิ้ง อย่างละ 5฿", "ร้านน้ำตึก 50 ปี", "ขายไอติม โค้กขวด และอื่นๆอีกมากมายราคาตั้งแต่ 10 ถึง 30฿", "ร้านสเต็กตึก 50 ปี", "มีสเต็กไก่ สเต็กหมู และสเต็กอื่นๆราคา 40฿+", "ร้านก๋วยเตี๋ยวตึก 50 ปี", "มีเส้นเล็ก เส้นใหญ่ เส้นหมี่ ต้มยำ น้ำตกราคา 35-45฿", 
+            "กิตติกรรมประกาศ", "ขอบคุณ ครูนรากรณ์ จินพุทธ ผู้ประกอบการร้านอาหารและผู้มีพระคุณทุกท่านที่ทำให้ชิ้นงานนี้สำเร็จลุล่วง", "ไม่พบร้านที่ต้องการหา 😔", "เลือกประเภทอาหารที่อยากทานได้เลย! 😋", "คะแนน⭐", "คะแนน", "ส่ง", "ประเมินตามความสะอาด รสชาติ ผู้ขายและอีกหลายปัจจัย"],
             eng: ["Pa Kaow's drink", "Smoothies and sodas avaliable for 20฿-40฿", "Sud Lhor Noodle", "Offering every type of noodle with delicious tastes 35฿+", "Curry store",
              "Selling curry with 1 kind for 30฿ or 2 kinds for 35฿", "Zeed spicy salad", "Spicy and delicious, comes with glass noodle and many more", "Appetizer of Dome Thong",
              "Every snacks and appetizer you coukd find is here! 20฿-40฿", "Number2 munkai", "Rice with chicken and fried chicken both for 35฿", "Nung Ning Drink",
              "smoothies avaliable for 20฿-40฿", "Pa Nong 👑", "'Made to order' store and special curry 35฿-80฿", "Sud Lhor the second", "Just like the first store with more range of noodle taste 35฿-40฿",
              "Pa Tarn Drink", "colored water and jellies 1฿ each", "Curry + Crispy pork", "Pork and more avaliable from 30฿-40฿, yes with curry also", "Pleum's marinated pork noodles.", 
              "Selling Instant noodle, spaghetti, and Cabonara for 35฿-45฿", "P'pop P'son snacks and fruits", "Another snack store that also sell fruits", "Tim's smoothies", 
-             "Cold and Smoothies drinks from 20฿-30฿, with topping +5฿", "No Stores found 😔", "Choose what to eat! 😋", "Rating⭐", "Rating", "Submit", 
-             "Rating Based on cleans, taste, seller, and many more."],
+             "Cold and Smoothies drinks from 20฿-30฿, with topping +5฿", "50th years drinks", "Selling ice cream, bottled coke and many more, ranging from 10 to 30฿.", "50th year Steak", "ฉhicken steaks, pork steaks and other steaks priced from 40฿+", "50-year-old noodle shop", "50th year noodle", "There are lek, yai, mhee noodles, tomyum, and namtok for 35-45฿.", "Acknowledgement", 
+             "Credits to Kru Narakorn Jinput, store owner, and all acquaintances who made this project exist.", "No Stores found 😔", "Choose what to eat! 😋", "Rating⭐", "Rating", "Submit", "Rating Based on cleans, taste, seller, and many more."],
         }
 
         const detailedText = {
             th: ["ร้านป้ำขาว ร้านน้ำที่ดังที่สุดในเตรียมอุดมศึกษา เป็นหนึ่งในร้านสำคัญของโดมทอง", "ร้านสุดหล่อ1 ร้านที่ทุกคนสามารถตักเกี๊ยวได้ได้ไม่อั้น สุดจะเรียกเราว่า สุดหล่อ ทุกครั้ง", "หนึ่งในร้านข้าวแกงที่ราคาคุ้มค่าที่สุด ป้าหวานขายหมูปิ้งอีกด้วย", "ร้านยำที่มีความพิเศษคือ มีเส้นแก้ว สามารถสั่งล่วงหน้าได้", 
             "ร้านขายของทอดชื่อดังในโดมทอง มีขายตั้งแต่เฟรนช์ฟรายจนถึงไก่ชีส", "ข้าวมันไก่ร้านนี้จะให้เราตักน้ำซุปและแตงกวาเอง ซึ่งถึงว่าแปลกตาในบรรดาร้านโดมทอง", 
             "ร้านริมโดมทอง ที่นักเรียนนิยมมาซื้อระหว่างพัก", "ร้านอาหารตามสั่งร้านดังแห่งเตรียมอุดม เปิดแม้กระทั่งช่วงปิดเทอมให้เด็กกิจกรรมได้มาแวะกินได้ สามารถสั่งผ่านไลน์ได้", "สุดหล่อ2 สาขาของสุดหล่อที่มีก๋วยเตี๋ยวน้ำตก", 
-            "ร้านน้ำที่ป้าสามารถผสมน้ำได้ทุกอย่าง ราคาตายตัวที่15บาท", "ร้านหมูกรอบที่ตอนเย็นขายไข่เจียวด้วย มีเครื่องเยอะมาก", "ร้านนี้ไม่ดัง", "ร้านขายผลไม้และของทอดต่างๆ", "ป้าติ๋มขายผลไม่ปั่น 🤓🤓"],
-            eng: ["The most famous drink store in Triam Udom Suksa School, also is one of the most important shops in Dom Thong.", "A shop where everyone can have unlimited 'เกี๊ยว' for free. Very Sud because everyone is Sud Lhor.", "One of the most affordable rice and curry store, she also sells grilled pork!", "A specialty of a salad shop is that they have glass noodles. You can order in advance.", "A famous fried food shop in Dom Thong, selling everything from French fries to cheese chicken.", "This store lets you serve your own soup and cucumbers, which is quite unusual among other Dom Thong shops.", "At the corber od Dom Thong, a popular place for students during breaks.", "A famous made-to-order store at Triam Udom Suksa School, open even during school breaks for active students to stop by and eat. Can order via Line.", "A branch of Sud Lhor with NamTok noodles", "A store where the she can mix any kind of smoothies for a fixed price of 15 baht.", "A crispy pork store that also sells omelets in the evening. There are a lots of ingredients.", "Very famous store selling Instant noodle, Cabonara, and spaghetti", "Selling fruit and fried food", "She sells fruit smoothies 🤓🤓​"],
+            "ร้านน้ำที่ป้าสามารถผสมน้ำได้ทุกอย่าง ราคาตายตัวที่15บาท", "ร้านหมูกรอบที่ตอนเย็นขายไข่เจียวด้วย มีเครื่องเยอะมาก", "ร้านนี้ไม่ดัง", "ร้านขายผลไม้และของทอดต่างๆ", "ป้าติ๋มขายผลไม่ปั่น 🤓🤓", "เป็นร้านขายน้ำที่ติดกับประตูหลัง (ประตูน้ำตาล) มากที่สุดขายตั้งแต่ไอติมจนไปถึงโค้กขวด",
+            "เป็นร้านสเต็กร้านเดียวในโรงเรียนเตรียมอุดมศึกษาขายราคาแพงแต่ได้คุณภาพที่คุ้มกับราคา", "ร้านก๋วยเตี๋ยวตามใจเราอยากสั่งแบบไหนพ่อค้าทำได้หมด",
+            "เว็บไซต์รีวิวร้านอาหารในโรงอาหารโดมทอง นี้สำเร็จลุล่วงได้ด้วยความกรุณาช่วยเหลือเเนะนำอย่างดียิ่งจาก ครูนรากรณ์ จินพุทธ ครูที่ปรึกษาโครงงาน ที่ได้ให้คำปรึกษาเเนะนำ รวมถึงได้ให้ข้อคิดเห็นต่าง ๆ ในการทำโครงงาน ตลอดจนการเเก้ไขข้อบกพร่องต่าง ๆ มาโดยตลอด คณะผู้จัดทำขอกราบขอบพระคุณเป็นอย่างสูง"],
+            eng: ["The most famous drink store in Triam Udom Suksa School, also is one of the most important shops in Dom Thong.", "A shop where everyone can have unlimited 'เกี๊ยว' for free. Very Sud because everyone is Sud Lhor.",
+             "One of the most affordable rice and curry store, she also sells grilled pork!", "A specialty of a salad shop is that they have glass noodles. You can order in advance.", "A famous fried food shop in Dom Thong, selling everything from French fries to cheese chicken.",
+             "This store lets you serve your own soup and cucumbers, which is quite unusual among other Dom Thong shops.", "At the corber od Dom Thong, a popular place for students during breaks.",
+             "A famous made-to-order store at Triam Udom Suksa School, open even during school breaks for active students to stop by and eat. Can order via Line.", "A branch of Sud Lhor with NamTok noodles",
+             "A store where the she can mix any kind of smoothies for a fixed price of 15 baht.", "A crispy pork store that also sells omelets in the evening. There are a lots of ingredients.",
+             "Very famous store selling Instant noodle, Cabonara, and spaghetti", "Selling fruit and fried food", "She sells fruit smoothies 🤓🤓​", "The closest store to the school's back door (Browndoor) selling icecream, oishi, bottled coke, and many more!", "The only steak store in TriamUdom School, for expensive price you will get the best quality they could create just for you",
+             "Noodle store that based on you.", "Domist was completed with helps and guidances from Kru Narakorn Jinput, the project advisor, who provided advice, suggestions, and various comments on the project and corrected various shortcomings failure. Our group very very appreciated your support and advice with deepest gratitude. 😊"],
         }
         
         /*phone number shown on connection*/
-        const connectionText = ["", "📞 0947691459", "📞 0642372765", "", "", "📞 0846378226", "", "📞 0832993094", "📞 0929799652", "", "📞 0650952397", "", "📞 0969594867", ""]
+        const connectionText = ["", "📞 0947691459", "📞 0642372765", "", "", "📞 0846378226", "", "📞 0832993094", "📞 0929799652", "", "📞 0650952397", "", "📞 0969594867", "", "", "", ""]
         
         /*Line shown on connection*/
-        const connection2Text = ["", "", "", "💬 Zeed", "", "", "", "", "", "", "💬 ชูแก้ว", "", "", ""]
+        const connection2Text = ["", "", "", "💬 Zeed", "", "", "", "", "", "", "💬 ชูแก้ว", "", "", "", "", "", ""]
         
         /*link to the store seller, 2 links call and line*/
-        const connectionLink = ["", "", "tel:0947691459", "", "tel:0642372765", "", "", "https://line.me/ti/p/fi8-RMBRNu", "", "", "tel:0846378226", "", "", "", "tel:0832993094", "https://line.me/ti/p/%40Tak2497", "tel:0929799652", "", "", "", "tel:0650952397", "https://line.me/ti/p/mWqKpEw2oK", "", "", "tel:0969594967", "", "", ""]
+        const connectionLink = ["", "", "tel:0947691459", "", "tel:0642372765", "", "", "https://line.me/ti/p/fi8-RMBRNu", "", "", "tel:0846378226", "", "", "", "tel:0832993094", "https://line.me/ti/p/%40Tak2497", "tel:0929799652", "", "", "", "tel:0650952397", "https://line.me/ti/p/mWqKpEw2oK", "", "", "tel:0969594967", "", "", "", "", "", "", "", "", ""]
         
         function hidePopup() {
             document.getElementById("popup").style.display = "none";
             document.getElementById("overlay").style.display = "none";          
-            document.getElementById("33").style.display = "none";
+            document.getElementById("41").style.display = "none";
             document.getElementById("popup-comment").style.display = "none";
             document.getElementById("ratee1").textContent = '☆';
             document.getElementById("ratee2").textContent = '☆';
@@ -884,7 +936,7 @@
         }
         
         function rater(num) {
-            document.getElementById("33").style.display = "block";
+            document.getElementById("41").style.display = "block";
             let rate1 = document.getElementById("ratee1")
             let rate2 = document.getElementById("ratee2")
             let rate3 = document.getElementById("ratee3")
@@ -969,7 +1021,7 @@
         }
 
         function changeLanguage(language) {
-            for(let i = 0; i <= 33; i++) {
+            for(let i = 0; i <= 41; i++) {
                 document.getElementById(i+1).textContent = boxText[language][i];
             }
             if (language == 'th') {
@@ -1052,7 +1104,7 @@
         }
         
         function submit() {
-            document.getElementById("35").style.display = 'block';
+            document.getElementById("43").style.display = 'block';
             let Stargate = sheetData[currentNum-1];
             Stargate[Math.abs(ratingRN-5)] += 1;
             console.log("Your submit have reached Stargate, await sending...");
@@ -1065,15 +1117,12 @@
                     rating: Stargate
                 })
             })
-            .then(() => document.getElementById("35").textContent = "Success!") // No response processing
+            .then(() => {
+                document.getElementById("43").textContent = "Success!";
+                document.getElementById("43").style.backgroundColor = "green";
+                recieveData();
+            }) // No response processing
             .catch(error => console.error("Fetch error:", error));
-            recieveData();
-        }
-
-        function collectData(data) {
-            console.log("Script is ready!");
-            document.getElementById("35").style.display = 'none';
-            document.getElementById("35").textContent = "Wait...";
         }
 
         var sheetData;
@@ -1082,7 +1131,10 @@
             .then(response => response.json())
             .then(data => {
                 sheetData = data;
-                collectData(data);
+                console.log("Script is ready!");
+                document.getElementById("43").style.display = 'none';
+                document.getElementById("43").textContent = "Wait...";
+                document.getElementById("43").style.backgroundColor = "rgb(143, 143, 143)";
             })
             .catch(error => console.error("Fetch error:", error));
         }
